@@ -2,6 +2,11 @@
 // * Pass in an el.
 // * I removed comparator.
 // * Fix weird rendering bug.
+// * Definitely add the form.
+// * Each pokemon has many of Xs. When clicking detail view, show all
+//   the Xs. Allow them to click for a detail view of the x.
+//     * I think this needs: (1) association method, (2) association collection, (3) parse method.
+// * **Maybe as a bonus build some wizard for saving nested collection.**
 
 window.Pokedex = function () {
   this.pokes = new Pokedex.Collections.Pokemon;
