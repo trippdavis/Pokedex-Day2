@@ -53,7 +53,16 @@ body {
 	padding: 10px;
 	cursor: pointer;
 }
+
 .poke-list-item:hover {
 	background-color: tomato;
 	color: white;
+}
+
+.new-pokemon label {
+  display: block;
+}
+.new-pokemon {
+  padding: 10px;
+  border: thick yellow dotted;
 }
