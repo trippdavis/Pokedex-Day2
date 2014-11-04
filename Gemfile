@@ -44,7 +44,6 @@ group :test, :development do
   gem 'capybara'
   gem 'launchy'
   gem 'jasmine', "~> 2.0.0.rc4"
-#  gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
-#  gem 'jasmine-core', "~> 2.0.0.rc3"
-#  gem 'jasmine-headless-webkit'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
