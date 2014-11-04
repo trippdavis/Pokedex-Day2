@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  attack: 1
+  defense: 1
+  evolve_level: 1
+  evolve_to: 1
+  poke_type: MyString
+  moves: MyString
+  levels: MyString
+  probability: 1
+  curve: 1.5
+
+two:
+  name: MyString
+  attack: 1
+  defense: 1
+  evolve_level: 1
+  evolve_to: 1
+  poke_type: MyString
+  moves: MyString
+  levels: MyString
+  probability: 1
+  curve: 1.5
