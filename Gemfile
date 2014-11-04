@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -35,7 +36,7 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 gem 'backbone-on-rails'
 
 group :test, :development do
@@ -44,6 +45,6 @@ group :test, :development do
   gem 'launchy'
   gem 'jasmine', "~> 2.0.0.rc4"
 #  gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
-  gem 'jasmine-core', "~> 2.0.0.rc3"
-  gem 'jasmine-headless-webkit'
+#  gem 'jasmine-core', "~> 2.0.0.rc3"
+#  gem 'jasmine-headless-webkit'
 end
