@@ -22,4 +22,6 @@ class Pokemon < ActiveRecord::Base
 
   validates :name, :poke_type, :number, presence: true
   validates :poke_type, inclusion: { in: TYPES }
+
+  has_many :toys
 end

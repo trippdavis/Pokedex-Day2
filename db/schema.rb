@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023180002) do
+ActiveRecord::Schema.define(version: 20141105185704) do
 
   create_table "masters", force: true do |t|
     t.string   "name"
@@ -36,5 +36,16 @@ ActiveRecord::Schema.define(version: 20141023180002) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "toys", force: true do |t|
+    t.integer  "pokemon_id"
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "happiness"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "toys", ["pokemon_id"], name: "index_toys_on_pokemon_id"
 
 end
