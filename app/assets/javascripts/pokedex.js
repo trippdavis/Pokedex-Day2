@@ -9,32 +9,65 @@
 // * **Maybe as a bonus build some wizard for saving nested collection.**
 
 window.Pokedex = function ($el) {
-  this.$el = $el;
-  this.pokes = new Pokedex.Collections.Pokemon;
-	this.$pokeList = this.$el.find('.pokemon-list');
-	this.$pokeDetail = this.$el.find('.pokemon-detail');
-  this.$newPoke = this.$el.find('.new-pokemon');
+  this.$el = $el; // II
+  this.pokes = new Pokedex.Collections.Pokemon; // I
+	this.$pokeList = this.$el.find('.pokemon-list'); // II
+	this.$pokeDetail = this.$el.find('.pokemon-detail'); // II
+  this.$newPoke = this.$el.find('.new-pokemon'); // II
 
-	this.$pokeList.on('click', 'li', this.selectPokemonFromList.bind(this));
-  this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); 
+	this.$pokeList.on('click', 'li', this.selectPokemonFromList.bind(this)); // II
+  this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); // II
 }
 
-Pokedex.Models = {};
-Pokedex.Collections = {};
+Pokedex.Models = {}; // I
+Pokedex.Collections = {}; // I
 
 // create Pokemon Backbone model
-Pokedex.Models.Pokemon = Backbone.Model.extend({
-	urlRoot: '/pokemon'
+Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
+	urlRoot: '/pokemon' // I
 });
 
 // create Pokemon Backbone collection
+//
+// #toys function - memoize collection with _toys. return _toys
+//   or new Toys collection
+//
+// #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
+//   and check if there is a 'pokemon' key. If so, call #set on our toys collection
+//   with the value of the pokemon key. 
 Pokedex.Collections.Pokemon = Backbone.Collection.extend({
-  model: Pokedex.Models.Pokemon,
-	url: '/pokemon',
-  comparator: 'number'
+  model: Pokedex.Models.Pokemon, // I
+	url: '/pokemon', // I
+  comparator: 'number', // bonus?
+
+  parse: function(payload) { // III
+    if(payload.pokemon) {
+      this.toys().set(payload.pokemon);
+      delete payload.pokemon;
+    } 
+    return payload;
+  },
+
+  toys: function() { // III
+    if(!this._toys) {
+      this._toys = new Pokedex.Collections.Toys([], this);
+    }
+    return this._toys;
+  }
 });
 
-Pokedex.prototype.listPokemon = function (callback) {
+Pokedex.Models.Toy = Backbone.Model.extend({ // III 
+  urlRoot: '/toys'
+});
+
+Pokedex.Collections.Toys = Backbone.Collection.extend({ // III 
+  model: Pokedex.Models.Toy,
+  initialize: function(models, pokemon) {
+    this.pokemon = pokemon;
+  }
+});
+
+Pokedex.prototype.listPokemon = function (callback) { // I
 	// create collection
 	// fetch collection
 	// print names asynch
@@ -47,7 +80,7 @@ Pokedex.prototype.listPokemon = function (callback) {
   return this.pokes;
 };
 
-Pokedex.prototype.renderListItem = function (pokemon) {
+Pokedex.prototype.renderListItem = function (pokemon) { // II 
 	// build LI
 	// apped it to $pokeList
 	var $li = $('<li class="poke-list-item" data-id=' +
@@ -60,7 +93,7 @@ Pokedex.prototype.renderListItem = function (pokemon) {
 	this.$pokeList.append($li);
 };
 
-Pokedex.prototype.createPokemon = function (attrs, callback) {
+Pokedex.prototype.createPokemon = function (attrs, callback) { // I
 	// instantiate object
 	// set attributes
 	// save and call callback
@@ -79,7 +112,7 @@ Pokedex.prototype.createPokemon = function (attrs, callback) {
   return poke;
 };
 
-Pokedex.prototype.renderDetail = function (pokemon) {
+Pokedex.prototype.renderDetail = function (pokemon) { // II
 	var num = pokemon.get('number');
   
   // num can be string or number depending on whether it came
@@ -102,7 +135,7 @@ Pokedex.prototype.renderDetail = function (pokemon) {
 	this.$pokeDetail.html(string);
 };
 
-Pokedex.prototype.submitPokemonForm = function(event) {
+Pokedex.prototype.submitPokemonForm = function(event) { // II
   event.preventDefault();
   var pokeAttrs = $(event.target).serializeJSON()['pokemon'];
 
@@ -113,7 +146,7 @@ Pokedex.prototype.submitPokemonForm = function(event) {
   });
 };
 
-Pokedex.prototype.selectPokemonFromList = function (event) {
+Pokedex.prototype.selectPokemonFromList = function (event) { // II
   var $target = $(event.target);
 
 	var pokeId = $target.data('id');
