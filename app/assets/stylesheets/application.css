@@ -67,9 +67,15 @@ body {
   text-align: right;
 }
 
-.new-pokemon {
+.new-pokemon, .detail {
   padding: 10px;
   border: thick yellow dotted;
+}
+
+.detail:after {
+  content: '';
+  clear:both;
+  display:block;
 }
 
 .new-pokemon button {

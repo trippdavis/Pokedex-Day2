@@ -67,32 +67,6 @@ Pokedex.Collections.Toys = Backbone.Collection.extend({ // III
   }
 });
 
-Pokedex.prototype.listPokemon = function (callback) { // I
-	// create collection
-	// fetch collection
-	// print names asynch
-  this.pokes.fetch({
-  	success: (function () {
-  		this.pokes.each(this.renderListItem.bind(this));
-      callback && callback();
-  	}).bind(this)
-  });
-  return this.pokes;
-};
-
-Pokedex.prototype.renderListItem = function (pokemon) { // II 
-	// build LI
-	// apped it to $pokeList
-	var $li = $('<li class="poke-list-item" data-id=' +
-				pokemon.get('id') + '>');
-	var shortInfo = ['name', 'number', 'poke_type'];
-	shortInfo.forEach(function (attr) {
-		$li.append(attr + ': ' + pokemon.get(attr) + '<br>');
-	});
-
-	this.$pokeList.append($li);
-};
-
 Pokedex.prototype.createPokemon = function (attrs, callback) { // I
 	// instantiate object
 	// set attributes
@@ -110,6 +84,19 @@ Pokedex.prototype.createPokemon = function (attrs, callback) { // I
   });
 
   return poke;
+};
+
+Pokedex.prototype.listPokemon = function (callback) { // I
+	// create collection
+	// fetch collection
+	// print names asynch
+  this.pokes.fetch({
+  	success: (function () {
+  		this.pokes.each(this.renderListItem.bind(this));
+      callback && callback();
+  	}).bind(this)
+  });
+  return this.pokes;
 };
 
 Pokedex.prototype.renderDetail = function (pokemon) { // II
@@ -156,8 +143,29 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 		}
 	}
 
-
 	this.$pokeDetail.html($detail);
+};
+
+Pokedex.prototype.renderListItem = function (pokemon) { // II 
+	// build LI
+	// apped it to $pokeList
+	var $li = $('<li class="poke-list-item" data-id=' +
+				pokemon.get('id') + '>');
+	var shortInfo = ['name', 'number', 'poke_type'];
+	shortInfo.forEach(function (attr) {
+		$li.append(attr + ': ' + pokemon.get(attr) + '<br>');
+	});
+
+	this.$pokeList.append($li);
+};
+
+Pokedex.prototype.selectPokemonFromList = function (event) { // II
+  var $target = $(event.target);
+
+	var pokeId = $target.data('id');
+	var pokemon = this.pokes.get(pokeId);
+
+	this.renderDetail(pokemon);
 };
 
 Pokedex.prototype.submitPokemonForm = function(event) { // II
@@ -169,15 +177,6 @@ Pokedex.prototype.submitPokemonForm = function(event) { // II
     that.renderDetail(pokemon);
     that.renderListItem(pokemon);
   });
-};
-
-Pokedex.prototype.selectPokemonFromList = function (event) { // II
-  var $target = $(event.target);
-
-	var pokeId = $target.data('id');
-	var pokemon = this.pokes.get(pokeId);
-
-	this.renderDetail(pokemon);
 };
 
 $(function() {
