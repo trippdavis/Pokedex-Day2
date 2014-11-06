@@ -23,11 +23,6 @@ Pokedex.Models = {}; // I
 Pokedex.Collections = {}; // I
 
 // create Pokemon Backbone model
-Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
-	urlRoot: '/pokemon' // I
-});
-
-// create Pokemon Backbone collection
 //
 // #toys function - memoize collection with _toys. return _toys
 //   or new Toys collection
@@ -35,15 +30,13 @@ Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
 // #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
 //   and check if there is a 'pokemon' key. If so, call #set on our toys collection
 //   with the value of the pokemon key. 
-Pokedex.Collections.Pokemon = Backbone.Collection.extend({
-  model: Pokedex.Models.Pokemon, // I
-	url: '/pokemon', // I
-  comparator: 'number', // bonus?
+Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
+	urlRoot: '/pokemon', // I
 
   parse: function(payload) { // III
-    if(payload.pokemon) {
-      this.toys().set(payload.pokemon);
-      delete payload.pokemon;
+    if(payload.toys) {
+      this.toys().set(payload.toys),
+      delete payload.toys;
     } 
     return payload;
   },
@@ -54,6 +47,13 @@ Pokedex.Collections.Pokemon = Backbone.Collection.extend({
     }
     return this._toys;
   }
+});
+
+// create Pokemon Backbone collection
+Pokedex.Collections.Pokemon = Backbone.Collection.extend({
+  model: Pokedex.Models.Pokemon, // I
+	url: '/pokemon', // I
+  comparator: 'number', // bonus?
 });
 
 Pokedex.Models.Toy = Backbone.Model.extend({ // III 
@@ -113,6 +113,28 @@ Pokedex.prototype.createPokemon = function (attrs, callback) { // I
 };
 
 Pokedex.prototype.renderDetail = function (pokemon) { // II
+  // fetch pokemon on renderDetail - this calls the show action on 
+  // pokemon controller and delivers @pokemon.toys through jbuilder
+  // on success, render toys and append to $pokeDetail
+  this.$pokeDetail.empty();
+  var that = this;
+
+  pokemon.fetch({ // III
+    success: function() {
+
+      var $toys = $('<ul class="toys"></ul>');
+      pokemon.toys().each(function(toy) { // III
+        var $li = $('<li>');
+        $li.append("name: " + toy.get('name'));
+        $li.append("happiness: " + toy.get('happiness'));
+        $li.append("price: $" + toy.get('price'));
+        $toys.append($li);
+      });
+      that.$pokeDetail.append($toys);
+      alert('added ' + pokemon.toys().length + ' toys');
+    }
+  });
+
 	var num = pokemon.get('number');
   
   // num can be string or number depending on whether it came
@@ -131,6 +153,7 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 						pokemon.get(attr) + '<br>';
 		}
 	}
+
 
 	this.$pokeDetail.html(string);
 };

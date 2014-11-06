@@ -9,7 +9,13 @@ class PokemonController < ApplicationController
 		end
 	end
 
-	def index
+	def destroy
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.destroy
+    render json: @pokemon
+  end
+  
+  def index
 		@pokemon = Pokemon.all
 		render 'index'
 	end
