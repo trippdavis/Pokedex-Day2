@@ -1,34 +1,44 @@
 <div id='pokedex'>
   <div class='pokemon-index'>
     <form class='new-pokemon'>
-      <label>Name:
+      <div>
+        <label 
+          for='pokemon_name'>Name:</label>
         <input
           type='text'
           name='pokemon[name]'>
-      </label>
+      </div>
 
-      <label>No.:
+      <div>
+        <label 
+          for='pokemon_number'>No.:</label>
         <input
           type='number'
           name='pokemon[number]'>
-      </label>
+      </div>
 
-      <label>Type:
+      <div>
+        <label 
+          for='pokemon_poke_type'>Type:</label>
         <select
+          id='pokemon_poke_type'
           name='pokemon[poke_type]'>
           <% Pokemon::TYPES.each do |type|%>
             <option><%= type %></option>
           <% end %>
         </select>
-      </label>
+      </div>
 
       <button>Create Pokemon</button>
     </form>
 
     <ul class='pokemon-list'></ul>
-  </div>
+  </div
 
-	<div class='pokemon-detail'>
-	</div>
+  ><div class='pokemon-detail'>
+	</div
+
+  ><div class='toy-detail'>
+  </div>
 
 </div>

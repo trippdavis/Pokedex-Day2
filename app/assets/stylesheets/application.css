@@ -33,8 +33,6 @@ body {
 }
 
 #pokedex {
-  width: 80%;
-	margin: 0 auto;
 	background-color: white;
 	padding: 10px;
 	height: 100%;
@@ -42,9 +40,9 @@ body {
 
 #pokedex > * {
 	height: 100%;
-	width: 50%;
+	width: 33.33333333333%;
 	border: thin solid blue;
-  float: left;
+  display:  inline-block;
 	overflow: auto;
 }
 
@@ -59,9 +57,16 @@ body {
 	color: white;
 }
 
-.new-pokemon label {
-  display: block;
+.new-pokemon > div {
+  margin-bottom: 4px;
 }
+
+.new-pokemon label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+}
+
 .new-pokemon {
   padding: 10px;
   border: thick yellow dotted;
@@ -73,5 +78,16 @@ body {
   color: white;
   background-color: tomato;
   border-radius: 5px;
+  cursor: pointer;
+  margin-left: 80px;
+}
+
+.toy {
+  border: thin solid tomato;
+  padding: 4px;
+  border-radius: 2px;
+  margin: 2px;
+}
+.toy:hover {
   cursor: pointer;
 }

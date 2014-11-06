@@ -121,17 +121,16 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 
   pokemon.fetch({ // III
     success: function() {
-
       var $toys = $('<ul class="toys"></ul>');
+      $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
       pokemon.toys().each(function(toy) { // III
-        var $li = $('<li>');
-        $li.append("name: " + toy.get('name'));
-        $li.append("happiness: " + toy.get('happiness'));
-        $li.append("price: $" + toy.get('price'));
+        var $li = $('<li class="toy">');
+        $li.append("name: " + toy.get('name') + '<br>');
+        $li.append("happiness: " + toy.get('happiness') + '<br>');
+        $li.append("price: $" + toy.get('price') + '<br>');
         $toys.append($li);
       });
       that.$pokeDetail.append($toys);
-      alert('added ' + pokemon.toys().length + ' toys');
     }
   });
 
@@ -145,17 +144,20 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 	while(num.length < 3) {
     num = '0' + num;
 	}
-	var string = '<img src="assets/pokemon_snaps/' + num + '.png"' +
-				'style="float:left;"><br>';
+
+  var $detail = $('<div class="detail">');
+
+	$detail.append('<img src="assets/pokemon_snaps/' + num + '.png"' +
+				'style="float:left;"><br>');
 	for(var attr in pokemon.attributes) {
 		if(pokemon.get(attr) && attr !== 'id') {
-			string += '<span style="font-weight:bold;">' + attr + ':</span> ' +
-						pokemon.get(attr) + '<br>';
+			$detail.append('<span style="font-weight:bold;">' + attr + ':</span> ' +
+						pokemon.get(attr) + '<br>');
 		}
 	}
 
 
-	this.$pokeDetail.html(string);
+	this.$pokeDetail.html($detail);
 };
 
 Pokedex.prototype.submitPokemonForm = function(event) { // II
