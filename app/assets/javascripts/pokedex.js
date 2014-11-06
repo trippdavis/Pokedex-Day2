@@ -14,9 +14,11 @@ window.Pokedex = function ($el) {
 	this.$pokeList = this.$el.find('.pokemon-list'); // II
 	this.$pokeDetail = this.$el.find('.pokemon-detail'); // II
   this.$newPoke = this.$el.find('.new-pokemon'); // II
+  this.$toyDetail = this.$el.find('.toy-detail'); // III
 
 	this.$pokeList.on('click', 'li', this.selectPokemonFromList.bind(this)); // II
   this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); // II
+  this.$pokeDetail.on('click', 'li', this.selectToyFromList.bind(this)); // III
 }
 
 Pokedex.Models = {}; // I
@@ -92,18 +94,19 @@ Pokedex.prototype.listPokemon = function (callback) { // I
 	// print names asynch
   this.pokes.fetch({
   	success: (function () {
-  		this.pokes.each(this.renderListItem.bind(this));
+  		this.pokes.each(this.renderPokemonListItem.bind(this));
       callback && callback();
   	}).bind(this)
   });
   return this.pokes;
 };
 
-Pokedex.prototype.renderDetail = function (pokemon) { // II
-  // fetch pokemon on renderDetail - this calls the show action on 
+Pokedex.prototype.renderPokemonDetail = function (pokemon) { // II
+  // fetch pokemon on renderPokemonDetail - this calls the show action on 
   // pokemon controller and delivers @pokemon.toys through jbuilder
   // on success, render toys and append to $pokeDetail
   this.$pokeDetail.empty();
+  this.$toyDetail.empty();
   var that = this;
 
   pokemon.fetch({ // III
@@ -111,7 +114,9 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
       var $toys = $('<ul class="toys"></ul>');
       $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
       pokemon.toys().each(function(toy) { // III
-        var $li = $('<li class="toy">');
+        var $li = $('<li class="toy-list-item">');
+        $li.data('pokemon-id', pokemon.get('id'));
+        $li.data('id', toy.get('id'));
         $li.append("name: " + toy.get('name') + '<br>');
         $li.append("happiness: " + toy.get('happiness') + '<br>');
         $li.append("price: $" + toy.get('price') + '<br>');
@@ -134,10 +139,9 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 
   var $detail = $('<div class="detail">');
 
-	$detail.append('<img src="assets/pokemon_snaps/' + num + '.png"' +
-				'style="float:left;"><br>');
+	$detail.append('<img src="' + pokemon.get('image_url') + '"><br>');
 	for(var attr in pokemon.attributes) {
-		if(pokemon.get(attr) && attr !== 'id') {
+		if(pokemon.get(attr) && attr !== 'id' && attr !== 'image_url') {
 			$detail.append('<span style="font-weight:bold;">' + attr + ':</span> ' +
 						pokemon.get(attr) + '<br>');
 		}
@@ -146,7 +150,25 @@ Pokedex.prototype.renderDetail = function (pokemon) { // II
 	this.$pokeDetail.html($detail);
 };
 
-Pokedex.prototype.renderListItem = function (pokemon) { // II 
+Pokedex.prototype.renderToyDetail = function(toy) { // III
+  this.$toyDetail.empty();
+
+  var $detail = $('<div class="detail">');
+  $detail.append('<img src="' + toy.get('image_url') + '"><br>');
+  for(var attr in toy.attributes) {
+    if(attr !== 'pokemon_id' && attr !== 'image_url') {
+      var $span = $('<span style="font-weight:bold;">');
+      $span.html(attr + ': ');
+      $detail.append($span);
+      $span.after('<br>');
+      $span.after(toy.get(attr));
+    }
+  }
+  
+  this.$toyDetail.html($detail);
+};
+
+Pokedex.prototype.renderPokemonListItem = function (pokemon) { // II 
 	// build LI
 	// apped it to $pokeList
 	var $li = $('<li class="poke-list-item" data-id=' +
@@ -165,7 +187,19 @@ Pokedex.prototype.selectPokemonFromList = function (event) { // II
 	var pokeId = $target.data('id');
 	var pokemon = this.pokes.get(pokeId);
 
-	this.renderDetail(pokemon);
+	this.renderPokemonDetail(pokemon);
+};
+
+Pokedex.prototype.selectToyFromList = function (event) { // III
+  var $target = $(event.target);
+
+	var toyId = $target.data('id');
+  var pokemonId = $target.data('pokemon-id');
+
+	var pokemon = this.pokes.get(pokemonId);
+  var toy = pokemon.toys().get(toyId);
+
+  this.renderToyDetail(toy);
 };
 
 Pokedex.prototype.submitPokemonForm = function(event) { // II
@@ -174,8 +208,8 @@ Pokedex.prototype.submitPokemonForm = function(event) { // II
 
   var that = this;
   this.createPokemon(pokeAttrs, function(pokemon) {
-    that.renderDetail(pokemon);
-    that.renderListItem(pokemon);
+    that.renderPokemonDetail(pokemon);
+    that.renderPokemonListItem(pokemon);
   });
 };
 

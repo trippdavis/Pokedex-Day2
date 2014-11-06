@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105185704) do
+ActiveRecord::Schema.define(version: 20141106194448) do
 
   create_table "masters", force: true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141105185704) do
     t.float    "curve"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
   create_table "toys", force: true do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20141105185704) do
     t.integer  "happiness"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
   add_index "toys", ["pokemon_id"], name: "index_toys_on_pokemon_id"

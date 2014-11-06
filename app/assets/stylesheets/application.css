@@ -26,6 +26,7 @@ html {
 	background-image: url(pokemon_bg.jpg);
 	background-position: center center;
 	background-size: cover;
+  font-family: Helvetica, sans-serif;
 }
 
 body {
@@ -46,13 +47,13 @@ body {
 	overflow: auto;
 }
 
-.poke-list-item {
+.poke-list-item, .toy-list-item {
 	border: thin solid red;
 	padding: 10px;
 	cursor: pointer;
 }
 
-.poke-list-item:hover {
+.poke-list-item:hover, .toy-list-item:hover {
 	background-color: tomato;
 	color: white;
 }
@@ -63,13 +64,23 @@ body {
 
 .new-pokemon label {
   display: inline-block;
-  width: 80px;
+  width: 100px;
   text-align: right;
+}
+
+.new-pokemon input {
+  display: inline-block;
 }
 
 .new-pokemon, .detail {
   padding: 10px;
   border: thick yellow dotted;
+}
+
+.flavor {
+  font-size: .7em;
+  color: darkgrey;
+  margin-left: 100px;
 }
 
 .detail:after {
@@ -85,7 +96,7 @@ body {
   background-color: tomato;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 100px;
 }
 
 .toy {
@@ -96,4 +107,10 @@ body {
 }
 .toy:hover {
   cursor: pointer;
+}
+
+.detail img {
+  float: left;
+  max-width: 300px;
+  max-height: 200px;
 }

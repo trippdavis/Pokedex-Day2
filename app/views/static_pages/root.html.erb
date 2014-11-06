@@ -19,6 +19,14 @@
 
       <div>
         <label 
+          for='pokemon_image_url'>Image URL:*</label>
+        <input
+          type='text'
+          name='pokemon[image_url]'>
+      </div>
+
+      <div>
+        <label 
           for='pokemon_poke_type'>Type:</label>
         <select
           id='pokemon_poke_type'
@@ -30,6 +38,10 @@
       </div>
 
       <button>Create Pokemon</button>
+      <br>
+      <span class='flavor'>
+        *Defaults to "/assets/pokemon_snaps/#{number}.png"
+      </span>
     </form>
 
     <ul class='pokemon-list'></ul>

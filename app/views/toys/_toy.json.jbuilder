@@ -1,1 +1,1 @@
-json.(toy, :id, :name, :pokemon_id, :price, :happiness)
+json.(toy, :id, :name, :pokemon_id, :price, :happiness, :image_url)
