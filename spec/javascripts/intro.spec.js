@@ -37,11 +37,10 @@ describe("listPokemon", function() {
 //});
   
   it("fetches the passed-in collection", function() {
-    var pokedex = new Pokedex();
-    var pokes = new Pokedex.Collections.Pokemon();
+    var pokedex = new Pokedex($('<div>'));
     
     this.server = sinon.fakeServer.create();
-    pokedex.listPokemon(pokes, function() {});
+    pokedex.listPokemon(function() {});
 
     expect(this.server.requests.length)
       .toEqual(1);
@@ -53,8 +52,7 @@ describe("listPokemon", function() {
 
   it("fills the passed-in collection", function() {
     
-    var pokedex = new Pokedex();
-    var pokes = new Pokedex.Collections.Pokemon();
+    var pokedex = new Pokedex($('<div>'));
 
     this.fixture = this.fixtures.Pokemon.index.response;
     this.server = sinon.fakeServer.create();
@@ -68,18 +66,17 @@ describe("listPokemon", function() {
       ]
     );
 
-    pokedex.listPokemon(pokes, function() {});
+    pokedex.listPokemon(function() {});
     this.server.respond();
     // check number of pokemon on success - should be 3
-    expect(pokes.length).toEqual(this.fixture.length);
+    expect(pokedex.pokes.length).toEqual(this.fixture.length);
   });
 
   describe("calling the callback function", function() {
 
     beforeEach(function () {
       this.called = false;
-      this.pokedex = new Pokedex();
-      this.pokes = new Pokedex.Collections.Pokemon();
+      this.pokedex = new Pokedex($('<div>'));
 
       this.fixture = this.fixtures.Pokemon.index.response;
       this.server = sinon.fakeServer.create();
@@ -94,7 +91,7 @@ describe("listPokemon", function() {
       );
       
       var that = this;
-      this.pokedex.listPokemon(this.pokes, function() {
+      this.pokedex.listPokemon(function() {
         that.called = true;
       });
     });
@@ -115,7 +112,7 @@ describe("listPokemon", function() {
 
       this.server.respond();
       expect(this.called).toBeTruthy();
-      expect(this.pokes.length).toEqual(this.fixture.length);
+      expect(this.pokedex.pokes.length).toEqual(this.fixture.length);
     });
   });
 });
@@ -124,7 +121,7 @@ describe("createPokemon", function() {
   beforeEach(function() {
     this.server = sinon.fakeServer.create();
 
-    this.pokedex = new Pokedex();
+    this.pokedex = new Pokedex($('<div>'));
   });
 
   afterEach(function() {
@@ -160,5 +157,9 @@ describe("createPokemon", function() {
     // I would like createPokemon to add the model to a collection,
     // so that students can do this with Collection#create, and maybe
     // experience using {wait: true} 
+    //this.pokedex.createPokemon({ name: "Pikachu", number: 25 });
+
+    //this.server.respond();
+    //expect(this.pokedex.pokes.length).toEqual(1);
   });
 });
