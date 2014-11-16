@@ -1,6 +1,4 @@
-# w7d1 Backbone Pokedex
-
-## or "Gotta Fetch 'em All"
+# w7d1 Backbone Pokedex ("Gotta Fetch 'em All")
 
 First, run `rake db:create db:migrate db:seed` for the initial
 database setup.
