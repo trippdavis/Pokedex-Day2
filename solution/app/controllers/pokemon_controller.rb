@@ -26,10 +26,9 @@ class PokemonController < ApplicationController
 	end
 
 	private
-
 	def pokemon_params
-		params.require(:pokemon).permit(:name, :number, :attack, :defense,
-					:evolve_level, :evolve_to, :poke_type, :curve, :image_url,
-					:probability, moves: [], levels: [])
+		params.require(:pokemon).permit(
+			:name, :attack, :defense, :poke_type :image_url, moves: []
+		)
 	end
 end
