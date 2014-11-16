@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ActiveRecord::Base.transaction do 
+ActiveRecord::Base.transaction do
   pokemon = {
     "1"=>{
       "name"=>"Bulbasaur",
@@ -1700,7 +1700,7 @@ ActiveRecord::Base.transaction do
       "probability"=> 0.3
     }
   }
-  
+
   pokemon = pokemon.map do |num, stats|
     stats['number'] = num
     stats['evolve_level'] = stats['evolveLevel']
@@ -1710,18 +1710,6 @@ ActiveRecord::Base.transaction do
 
     stats
   end
-  
+
   Pokemon.create!(pokemon.shuffle)
-  
-  ash = Master.create!(
-    name: 'Ash Ketchum', 
-    hometown: 'Pallet Town', 
-    age: 15
-  )
-  gary = Master.create!(
-    name: 'Gary Oak',
-    hometown: 'Pallet Town',
-    age: 15
-  )
-  
 end

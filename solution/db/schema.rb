@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141106194448) do
 
-  create_table "masters", force: true do |t|
-    t.string   "name"
-    t.string   "hometown"
-    t.integer  "age"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pokemons", force: true do |t|
     t.string   "name"
     t.integer  "number"
