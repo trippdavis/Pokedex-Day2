@@ -12,9 +12,9 @@ class PokemonController < ApplicationController
 	def destroy
     @pokemon = Pokemon.find(params[:id])
     @pokemon.destroy
-    render json: @pokemon
+    render 'show'
   end
-  
+
   def index
 		@pokemon = Pokemon.all
 		render 'index'
@@ -28,7 +28,7 @@ class PokemonController < ApplicationController
 	private
 	def pokemon_params
 		params.require(:pokemon).permit(
-			:name, :attack, :defense, :poke_type :image_url, moves: []
+			:image_url, :attack, :defense, :name, :poke_type, moves: []
 		)
 	end
 end
