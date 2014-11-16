@@ -1,5 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# This file should contain all the record creation needed to seed the
+# database with its default values.
+#
+# The data can then be loaded with the rake db:seed (or created
+# alongside the db with db:setup).
 #
 # Examples:
 #
@@ -12,30 +15,22 @@ ActiveRecord::Base.transaction do
       "name"=>"Bulbasaur",
       "attack"=>49,
       "defense"=>49,
-      "evolveLevel"=>16,
-      "evolveTo"=>"2",
       "poke_type"=>"grass",
       "moves"=>[
          "tackle",
          "vine whip"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 10],
-      "probability"=> 3
     },
     "2"=>{
       "name"=>"Ivysaur",
       "attack"=>62,
       "defense"=>63,
-      "evolveLevel"=>32,
-      "evolveTo"=>"3",
       "poke_type"=>"grass",
       "moves"=>[
          "tackle",
          "vine whip",
          "razor leaf"
       ],
-      "curve"=>1.3
     },
     "3"=>{
       "name"=>"Venusaur",
@@ -47,30 +42,22 @@ ActiveRecord::Base.transaction do
          "vine whip",
          "razor leaf"
       ],
-      "curve"=>1.3
     },
     "4"=>{
       "name"=>"Charmander",
       "attack"=>52,
       "defense"=>43,
-      "evolveLevel"=>16,
-      "evolveTo"=>"5",
       "poke_type"=>"fire",
       "moves"=>[
          "scratch",
          "ember",
          "metal claw"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 10],
-      "probability"=> 3
     },
     "5"=>{
       "name"=>"Charmeleon",
       "attack"=>64,
       "defense"=>58,
-      "evolveLevel"=>36,
-      "evolveTo"=>"6",
       "poke_type"=>"fire",
       "moves"=>[
          "scratch",
@@ -78,7 +65,6 @@ ActiveRecord::Base.transaction do
          "metal claw",
          "flamethrower"
       ],
-      "curve"=>1.3
     },
     "6"=>{
       "name"=>"Charizard",
@@ -91,30 +77,22 @@ ActiveRecord::Base.transaction do
          "slash",
          "metal claw"
       ],
-      "curve"=>1.3
     },
     "7"=>{
       "name"=>"Squirtle",
       "attack"=>48,
       "defense"=>65,
-      "evolveLevel"=>16,
-      "evolveTo"=>"8",
       "poke_type"=>"water",
       "moves"=>[
          "tackle",
          "bubble",
          "water gun"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 10],
-      "probability"=> 3
     },
     "8"=>{
       "name"=>"Wartortle",
       "attack"=>63,
       "defense"=>80,
-      "evolveLevel"=>36,
-      "evolveTo"=>"9",
       "poke_type"=>"water",
       "moves"=>[
          "tackle",
@@ -122,7 +100,6 @@ ActiveRecord::Base.transaction do
          "water gun",
          "bite"
       ],
-      "curve"=>1.3
     },
     "9"=>{
       "name"=>"Blastoise",
@@ -135,21 +112,15 @@ ActiveRecord::Base.transaction do
          "water gun",
          "bite"
       ],
-      "curve"=>1.3
     },
     "10"=>{
       "name"=>"Caterpie",
       "attack"=>30,
       "defense"=>35,
-      "evolveLevel"=>7,
-      "evolveTo"=>"11",
       "poke_type"=>"bug",
       "moves"=>[
          "tackle"
       ],
-      "curve"=>1.6,
-      "levels"=> [2, 7],
-      "probability"=> 15
     },
     "12"=>{
       "name"=>"Butterfree",
@@ -162,50 +133,36 @@ ActiveRecord::Base.transaction do
          "psybeam",
          "silver wind"
       ],
-      "curve"=>1.6
     },
     "13"=>{
       "name"=>"Weedle",
       "attack"=>35,
       "defense"=>30,
-      "evolveLevel"=>7,
-      "evolveTo"=>"14",
       "poke_type"=>"bug",
       "moves"=>[
          "poison sting"
       ],
-      "curve"=>1.6,
-      "levels"=> [2, 7],
-      "probability"=> 15
     },
     "16"=>{
       "name"=>"Pidgey",
       "attack"=>45,
       "defense"=>40,
-      "evolveLevel"=>18,
-      "evolveTo"=>"17",
       "poke_type"=>"normal",
       "moves"=>[
          "tackle",
          "gust"
       ],
-      "curve"=>1.3,
-      "levels"=> [2, 10],
-      "probability"=> 15
     },
     "17"=>{
       "name"=>"Pidgeotto",
       "attack"=>60,
       "defense"=>55,
-      "evolveLevel"=>36,
-      "evolveTo"=>"18",
       "poke_type"=>"normal",
       "moves"=>[
          "tackle",
          "gust",
          "wing attack"
       ],
-      "curve"=>1.3
     },
     "18"=>{
       "name"=>"Pidgeot",
@@ -217,22 +174,16 @@ ActiveRecord::Base.transaction do
          "gust",
          "wing attack"
       ],
-      "curve"=>1.3
     },
     "19"=>{
       "name"=>"Rattata",
       "attack"=>56,
       "defense"=>35,
-      "evolveLevel"=>20,
-      "evolveTo"=>"20",
       "poke_type"=>"normal",
       "moves"=>[
          "tackle",
          "hyper fang"
       ],
-      "curve"=>1.6,
-      "levels"=> [2, 7],
-      "probability"=> 20
     },
     "20"=>{
       "name"=>"Raticate",
@@ -243,21 +194,15 @@ ActiveRecord::Base.transaction do
          "tackle",
          "hyper fang"
       ],
-      "curve"=>1.6
     },
     "21"=>{
       "name"=>"Spearow",
       "attack"=>60,
       "defense"=>30,
-      "evolveLevel"=>20,
-      "evolveTo"=>"22",
       "poke_type"=>"normal",
       "moves"=>[
          "peck"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 10
     },
     "22"=>{
       "name"=>"Fearow",
@@ -268,22 +213,16 @@ ActiveRecord::Base.transaction do
          "peck",
          "drill peck"
       ],
-      "curve"=>1.6
     },
     "23"=>{
       "name"=>"Ekans",
       "attack"=>60,
       "defense"=>44,
-      "evolveLevel"=>22,
-      "evolveTo"=>"24",
       "poke_type"=>"poison",
       "moves"=>[
          "poison sting",
          "bite"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 15
     },
     "24"=>{
       "name"=>"Arbok",
@@ -295,7 +234,6 @@ ActiveRecord::Base.transaction do
          "bite",
          "acid"
       ],
-      "curve"=>1.6
     },
     "26"=>{
       "name"=>"Raichu",
@@ -306,22 +244,16 @@ ActiveRecord::Base.transaction do
          "thundershock",
          "thunderbolt"
       ],
-      "curve"=>1.6
     },
     "27"=>{
       "name"=>"Sandshrew",
       "attack"=>75,
       "defense"=>85,
-      "evolveLevel"=>22,
-      "evolveTo"=>"28",
       "poke_type"=>"ground",
       "moves"=>[
          "scratch",
          "poison sting"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 10
     },
     "28"=>{
       "name"=>"Sandslash",
@@ -334,21 +266,15 @@ ActiveRecord::Base.transaction do
          "slash",
          "swift"
       ],
-      "curve"=>1.6
     },
     "29"=>{
       "name"=>"Nidoran",
       "attack"=>47,
       "defense"=>52,
-      "evolveLevel"=>16,
-      "evolveTo"=>"30",
       "poke_type"=>"poison",
       "moves"=>[
          "scratch"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 8],
-      "probability"=> 15
     },
     "31"=>{
       "name"=>"Nidoqueen",
@@ -361,21 +287,15 @@ ActiveRecord::Base.transaction do
          "body slam",
          "superpower"
       ],
-      "curve"=>1.3
     },
     "32"=>{
       "name"=>"Nidoran",
       "attack"=>57,
       "defense"=>40,
-      "evolveLevel"=>16,
-      "evolveTo"=>"33",
       "poke_type"=>"poison",
       "moves"=>[
          "peck"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 8],
-      "probability"=> 15
     },
     "34"=>{
       "name"=>"Nidoking",
@@ -387,7 +307,6 @@ ActiveRecord::Base.transaction do
          "poison sting",
          "megahorn"
       ],
-      "curve"=>1.3
     },
     "38"=>{
       "name"=>"Ninetales",
@@ -397,23 +316,17 @@ ActiveRecord::Base.transaction do
       "moves"=>[
          "ember"
       ],
-      "curve"=>1.6
     },
     "41"=>{
       "name"=>"Zubat",
       "attack"=>45,
       "defense"=>35,
-      "evolveLevel"=>22,
-      "evolveTo"=>"42",
       "poke_type"=>"poison",
       "moves"=>[
          "astonish",
          "bite",
          "wing attack"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 15
     },
     "42"=>{
       "name"=>"Golbat",
@@ -426,21 +339,15 @@ ActiveRecord::Base.transaction do
          "wing attack",
          "air cutter"
       ],
-      "curve"=>1.6
     },
     "46"=>{
       "name"=>"Paras",
       "attack"=>70,
       "defense"=>55,
-      "evolveLevel"=>24,
-      "evolveTo"=>"47",
       "poke_type"=>"bug",
       "moves"=>[
          "scratch"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 15
     },
     "47"=>{
       "name"=>"Parasect",
@@ -451,22 +358,16 @@ ActiveRecord::Base.transaction do
          "scratch",
          "slash"
       ],
-      "curve"=>1.6
     },
     "48"=>{
       "name"=>"Venonat",
       "attack"=>55,
       "defense"=>50,
-      "evolveLevel"=>31,
-      "evolveTo"=>"49",
       "poke_type"=>"bug",
       "moves"=>[
          "tackle",
          "confusion"
       ],
-      "curve"=>1.6,
-      "levels"=> [10, 24],
-      "probability"=> 8
     },
     "49"=>{
       "name"=>"Venomoth",
@@ -479,21 +380,15 @@ ActiveRecord::Base.transaction do
          "confusion",
          "gust"
       ],
-      "curve"=>1.6
     },
     "50"=>{
       "name"=>"Diglett",
       "attack"=>55,
       "defense"=>25,
-      "evolveLevel"=>26,
-      "evolveTo"=>"51",
       "poke_type"=>"ground",
       "moves"=>[
          "scratch"
       ],
-      "curve"=>1.6,
-      "levels"=> [8, 16],
-      "probability"=> 15
     },
     "51"=>{
       "name"=>"Dugtrio",
@@ -505,22 +400,16 @@ ActiveRecord::Base.transaction do
          "slash",
          "earthquake"
       ],
-      "curve"=>1.6
     },
     "52"=>{
       "name"=>"Meowth",
       "attack"=>45,
       "defense"=>35,
-      "evolveLevel"=>28,
-      "evolveTo"=>"53",
       "poke_type"=>"normal",
       "moves"=>[
          "scratch",
          "bite"
       ],
-      "curve"=>1.6,
-      "levels"=> [8, 20],
-      "probability"=> 10
     },
     "53"=>{
       "name"=>"Persian",
@@ -532,22 +421,16 @@ ActiveRecord::Base.transaction do
          "bite",
          "slash"
       ],
-      "curve"=>1.6
     },
     "54"=>{
       "name"=>"Psyduck",
       "attack"=>52,
       "defense"=>48,
-      "evolveLevel"=>33,
-      "evolveTo"=>"55",
       "poke_type"=>"water",
       "moves"=>[
          "scratch",
          "confusion"
       ],
-      "curve"=>1.6,
-      "levels"=> [8, 20],
-      "probability"=> 15
     },
     "55"=>{
       "name"=>"Golduck",
@@ -559,23 +442,17 @@ ActiveRecord::Base.transaction do
          "confusion",
          "hydro pump"
       ],
-      "curve"=>1.6
     },
     "56"=>{
       "name"=>"Mankey",
       "attack"=>80,
       "defense"=>35,
-      "evolveLevel"=>28,
-      "evolveTo"=>"57",
       "poke_type"=>"fighting",
       "moves"=>[
          "scratch",
          "low kick",
          "karate chop"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 18],
-      "probability"=> 8
     },
     "57"=>{
       "name"=>"Primeape",
@@ -588,7 +465,6 @@ ActiveRecord::Base.transaction do
          "karate chop",
          "cross chop"
       ],
-      "curve"=>1.6
     },
     "59"=>{
       "name"=>"Arcanine",
@@ -599,22 +475,16 @@ ActiveRecord::Base.transaction do
          "bite",
          "ember"
       ],
-      "curve"=>1
     },
     "60"=>{
       "name"=>"Poliwag",
       "attack"=>50,
       "defense"=>40,
-      "evolveLevel"=>25,
-      "evolveTo"=>"61",
       "poke_type"=>"water",
       "moves"=>[
          "bubble",
          "water gun"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 18],
-      "probability"=> 6
     },
     "62"=>{
       "name"=>"Poliwrath",
@@ -624,7 +494,6 @@ ActiveRecord::Base.transaction do
       "moves"=>[
          "water gun"
       ],
-      "curve"=>1.3
     },
     "65"=>{
       "name"=>"Alakazam",
@@ -636,22 +505,16 @@ ActiveRecord::Base.transaction do
          "psybeam",
          "psychic"
       ],
-      "curve"=>1.3
     },
     "66"=>{
       "name"=>"Machop",
       "attack"=>80,
       "defense"=>50,
-      "evolveLevel"=>28,
-      "evolveTo"=>"67",
       "poke_type"=>"fighting",
       "moves"=>[
          "low kick",
          "karate chop"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 19],
-      "probability"=> 12
     },
     "68"=>{
       "name"=>"Machamp",
@@ -664,21 +527,15 @@ ActiveRecord::Base.transaction do
          "cross chop",
          "dynamicpunch"
       ],
-      "curve"=>1.3
     },
     "69"=>{
       "name"=>"Bellsprout",
       "attack"=>75,
       "defense"=>35,
-      "evolveLevel"=>21,
-      "evolveTo"=>"70",
       "poke_type"=>"grass",
       "moves"=>[
          "vine whip"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 20],
-      "probability"=> 15
     },
     "71"=>{
       "name"=>"Victreebel",
@@ -689,14 +546,11 @@ ActiveRecord::Base.transaction do
          "vine whip",
          "razor leaf"
       ],
-      "curve"=>1.3
     },
     "72"=>{
       "name"=>"Tentacool",
       "attack"=>40,
       "defense"=>35,
-      "evolveLevel"=>30,
-      "evolveTo"=>"73",
       "poke_type"=>"water",
       "moves"=>[
          "poison sting",
@@ -704,9 +558,6 @@ ActiveRecord::Base.transaction do
          "acid",
          "bubblebeam"
       ],
-      "curve"=>1,
-      "levels"=> [5, 20],
-      "probability"=> 10
     },
     "73"=>{
       "name"=>"Tentacruel",
@@ -719,22 +570,16 @@ ActiveRecord::Base.transaction do
          "acid",
          "bubblebeam"
       ],
-      "curve"=>1
     },
     "74"=>{
       "name"=>"Geodude",
       "attack"=>80,
       "defense"=>100,
-      "evolveLevel"=>25,
-      "evolveTo"=>"75",
       "poke_type"=>"rock",
       "moves"=>[
          "tackle",
          "rock throw"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 20],
-      "probability"=> 15
     },
     "76"=>{
       "name"=>"Golem",
@@ -746,22 +591,16 @@ ActiveRecord::Base.transaction do
          "rock throw",
          "earthquake"
       ],
-      "curve"=>1.3
     },
     "77"=>{
       "name"=>"Ponyta",
       "attack"=>85,
       "defense"=>55,
-      "evolveLevel"=>40,
-      "evolveTo"=>"78",
       "poke_type"=>"fire",
       "moves"=>[
          "ember",
          "stomp"
       ],
-      "curve"=>1.6,
-      "levels"=> [20, 35],
-      "probability"=> 6
     },
     "78"=>{
       "name"=>"Rapidash",
@@ -773,14 +612,11 @@ ActiveRecord::Base.transaction do
          "stomp",
          "fire blast"
       ],
-      "curve"=>1.6
     },
     "79"=>{
       "name"=>"Slowpoke",
       "attack"=>65,
       "defense"=>65,
-      "evolveLevel"=>37,
-      "evolveTo"=>"80",
       "poke_type"=>"water",
       "moves"=>[
          "tackle",
@@ -788,9 +624,6 @@ ActiveRecord::Base.transaction do
          "confusion",
          "headbutt"
       ],
-      "curve"=>1.6,
-      "levels"=> [25, 35],
-      "probability"=> 5
     },
     "80"=>{
       "name"=>"Slowbro",
@@ -803,23 +636,17 @@ ActiveRecord::Base.transaction do
          "confusion",
          "headbutt"
       ],
-      "curve"=>1.6
     },
     "81"=>{
       "name"=>"Magnemite",
       "attack"=>35,
       "defense"=>70,
-      "evolveLevel"=>30,
-      "evolveTo"=>"82",
       "poke_type"=>"electric",
       "moves"=>[
          "tackle",
          "thundershock",
          "spark"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 20],
-      "probability"=> 8
     },
     "82"=>{
       "name"=>"Magneton",
@@ -832,7 +659,6 @@ ActiveRecord::Base.transaction do
          "spark",
          "zap cannon"
       ],
-      "curve"=>1.6
     },
     "83"=>{
       "name"=>"Farfetch'd",
@@ -843,23 +669,15 @@ ActiveRecord::Base.transaction do
          "peck",
          "slash"
       ],
-      "curve"=>1.6,
-      "levels"=> [25, 40],
-      "probability"=> 8
     },
     "84"=>{
       "name"=>"Doduo",
       "attack"=>85,
       "defense"=>45,
-      "evolveLevel"=>31,
-      "evolveTo"=>"85",
       "poke_type"=>"normal",
       "moves"=>[
          "peck"
       ],
-      "curve"=>1.6,
-      "levels"=> [15, 25],
-      "probability"=> 8
     },
     "85"=>{
       "name"=>"Dodrio",
@@ -870,23 +688,17 @@ ActiveRecord::Base.transaction do
          "peck",
          "drill peck"
       ],
-      "curve"=>1.6
     },
     "86"=>{
       "name"=>"Seel",
       "attack"=>45,
       "defense"=>55,
-      "evolveLevel"=>34,
-      "evolveTo"=>"87",
       "poke_type"=>"water",
       "moves"=>[
          "headbutt",
          "icy wind",
          "aurora beam"
       ],
-      "curve"=>1.6,
-      "levels"=> [25, 30],
-      "probability"=> 4
     },
     "87"=>{
       "name"=>"Dewgong",
@@ -899,22 +711,16 @@ ActiveRecord::Base.transaction do
          "icy wind",
          "aurora beam"
       ],
-      "curve"=>1.6
     },
     "88"=>{
       "name"=>"Grimer",
       "attack"=>80,
       "defense"=>50,
-      "evolveLevel"=>38,
-      "evolveTo"=>"89",
       "poke_type"=>"poison",
       "moves"=>[
          "pound",
          "sludge"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 30],
-      "probability"=> 10
     },
     "89"=>{
       "name"=>"Muk",
@@ -926,7 +732,6 @@ ActiveRecord::Base.transaction do
          "sludge",
          "sludge bomb"
       ],
-      "curve"=>1.6
     },
     "91"=>{
       "name"=>"Cloyster",
@@ -936,22 +741,16 @@ ActiveRecord::Base.transaction do
       "moves"=>[
          "aurora beam"
       ],
-      "curve"=>1
     },
     "92"=>{
       "name"=>"Gastly",
       "attack"=>35,
       "defense"=>30,
-      "evolveLevel"=>25,
-      "evolveTo"=>"93",
       "poke_type"=>"ghost",
       "moves"=>[
          "tackle",
          "lick"
       ],
-      "curve"=>1.3,
-      "levels"=> [5, 15],
-      "probability"=> 10
     },
     "94"=>{
       "name"=>"Gengar",
@@ -964,7 +763,6 @@ ActiveRecord::Base.transaction do
          "shadow punch",
          "shadow ball"
       ],
-      "curve"=>1.3
     },
     "95"=>{
       "name"=>"Onix",
@@ -977,25 +775,17 @@ ActiveRecord::Base.transaction do
          "dragonbreath",
          "slam"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 40],
-      "probability"=> 8
     },
     "96"=>{
       "name"=>"Drowzee",
       "attack"=>48,
       "defense"=>45,
-      "evolveLevel"=>26,
-      "evolveTo"=>"97",
       "poke_type"=>"psychic",
       "moves"=>[
          "pound",
          "confusion",
          "headbutt"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 8
     },
     "97"=>{
       "name"=>"Hypno",
@@ -1008,14 +798,11 @@ ActiveRecord::Base.transaction do
          "headbutt",
          "psychic"
       ],
-      "curve"=>1.6
     },
     "98"=>{
       "name"=>"Krabby",
       "attack"=>105,
       "defense"=>90,
-      "evolveLevel"=>28,
-      "evolveTo"=>"99",
       "poke_type"=>"water",
       "moves"=>[
          "bubble",
@@ -1023,9 +810,6 @@ ActiveRecord::Base.transaction do
          "mud shot",
          "stomp"
       ],
-      "curve"=>1.6,
-      "levels"=> [15, 20],
-      "probability"=> 6
     },
     "99"=>{
       "name"=>"Kingler",
@@ -1038,22 +822,16 @@ ActiveRecord::Base.transaction do
          "vicegrip",
          "mud shot"
       ],
-      "curve"=>1.6
     },
     "100"=>{
       "name"=>"Voltorb",
       "attack"=>30,
       "defense"=>50,
-      "evolveLevel"=>30,
-      "evolveTo"=>"101",
       "poke_type"=>"electric",
       "moves"=>[
          "tackle",
          "spark"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 12],
-      "probability"=> 6
     },
     "101"=>{
       "name"=>"Electrode",
@@ -1065,7 +843,6 @@ ActiveRecord::Base.transaction do
          "spark",
          "swift"
       ],
-      "curve"=>1.6
     },
     "103"=>{
       "name"=>"Exeggutor",
@@ -1077,22 +854,16 @@ ActiveRecord::Base.transaction do
          "stomp",
          "egg bomb"
       ],
-      "curve"=>1
     },
     "104"=>{
       "name"=>"Cubone",
       "attack"=>50,
       "defense"=>95,
-      "evolveLevel"=>28,
-      "evolveTo"=>"105",
       "poke_type"=>"ground",
       "moves"=>[
          "bone club",
          "headbutt"
       ],
-      "curve"=>1.6,
-      "levels"=> [15, 22],
-      "probability"=> 5
     },
     "105"=>{
       "name"=>"Marowak",
@@ -1103,21 +874,15 @@ ActiveRecord::Base.transaction do
          "bone club",
          "headbutt"
       ],
-      "curve"=>1.6
     },
     "106"=>{
       "name"=>"Hitmonlee",
       "attack"=>120,
       "defense"=>53,
-      "evolveLevel"=>20,
-      "evolveTo"=>"107",
       "poke_type"=>"fighting",
       "moves"=>[
          "rolling kick"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "107"=>{
       "name"=>"Hitmonchan",
@@ -1130,7 +895,6 @@ ActiveRecord::Base.transaction do
          "fire punch",
          "sky uppercut"
       ],
-      "curve"=>1.6
     },
     "108"=>{
       "name"=>"Lickitung",
@@ -1142,25 +906,17 @@ ActiveRecord::Base.transaction do
          "stomp",
          "slam"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 10
     },
     "109"=>{
       "name"=>"Koffing",
       "attack"=>65,
       "defense"=>95,
-      "evolveLevel"=>35,
-      "evolveTo"=>"110",
       "poke_type"=>"poison",
       "moves"=>[
          "tackle",
          "smog",
          "sludge"
       ],
-      "curve"=>1.6,
-      "levels"=> [15, 25],
-      "probability"=> 6
     },
     "110"=>{
       "name"=>"Weezing",
@@ -1172,22 +928,16 @@ ActiveRecord::Base.transaction do
          "smog",
          "sludge"
       ],
-      "curve"=>1.6
     },
     "111"=>{
       "name"=>"Rhyhorn",
       "attack"=>85,
       "defense"=>95,
-      "evolveLevel"=>42,
-      "evolveTo"=>"112",
       "poke_type"=>"ground",
       "moves"=>[
          "horn attack",
          "stomp"
       ],
-      "curve"=>1,
-      "levels"=> [15, 35],
-      "probability"=> 4
     },
     "112"=>{
       "name"=>"Rhydon",
@@ -1200,7 +950,6 @@ ActiveRecord::Base.transaction do
          "earthquake",
          "megahorn"
       ],
-      "curve"=>1
     },
     "113"=>{
       "name"=>"Chansey",
@@ -1211,9 +960,6 @@ ActiveRecord::Base.transaction do
          "pound",
          "egg bomb"
       ],
-      "curve"=>1.9,
-      "levels"=> [25, 55],
-      "probability"=> 4
     },
     "114"=>{
       "name"=>"Tangela",
@@ -1225,9 +971,6 @@ ActiveRecord::Base.transaction do
          "vine whip",
          "slam"
       ],
-      "curve"=>1.6,
-      "levels"=> [15, 45],
-      "probability"=> 4
     },
     "115"=>{
       "name"=>"Kangaskhan",
@@ -1239,25 +982,17 @@ ActiveRecord::Base.transaction do
          "mega punch",
          "dizzy punch"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 45],
-      "probability"=> 4
     },
     "116"=>{
       "name"=>"Horsea",
       "attack"=>40,
       "defense"=>70,
-      "evolveLevel"=>32,
-      "evolveTo"=>"117",
       "poke_type"=>"water",
       "moves"=>[
          "bubble",
          "water gun",
          "twister"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 10
     },
     "117"=>{
       "name"=>"Seadra",
@@ -1270,22 +1005,16 @@ ActiveRecord::Base.transaction do
          "twister",
          "hydro pump"
       ],
-      "curve"=>1.6
     },
     "118"=>{
       "name"=>"Goldeen",
       "attack"=>67,
       "defense"=>60,
-      "evolveLevel"=>33,
-      "evolveTo"=>"119",
       "poke_type"=>"water",
       "moves"=>[
          "peck",
          "horn attack"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 25],
-      "probability"=> 12
     },
     "119"=>{
       "name"=>"Seaking",
@@ -1298,7 +1027,6 @@ ActiveRecord::Base.transaction do
          "waterfall",
          "megahorn"
       ],
-      "curve"=>1.6
     },
     "121"=>{
       "name"=>"Starmie",
@@ -1309,7 +1037,6 @@ ActiveRecord::Base.transaction do
          "water gun",
          "swift"
       ],
-      "curve"=>1
     },
     "122"=>{
       "name"=>"Mr. mime",
@@ -1322,9 +1049,6 @@ ActiveRecord::Base.transaction do
          "psybeam",
          "psychic"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "123"=>{
       "name"=>"Scyther",
@@ -1335,9 +1059,6 @@ ActiveRecord::Base.transaction do
          "wing attack",
          "slash"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "124"=>{
       "name"=>"Jynx",
@@ -1350,9 +1071,6 @@ ActiveRecord::Base.transaction do
          "powder snow",
          "ice punch"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "125"=>{
       "name"=>"Electabuzz",
@@ -1365,9 +1083,6 @@ ActiveRecord::Base.transaction do
          "thunderbolt",
          "thunder"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "126"=>{
       "name"=>"Magmar",
@@ -1380,9 +1095,6 @@ ActiveRecord::Base.transaction do
          "fire punch",
          "flamethrower"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "127"=>{
       "name"=>"Pinsir",
@@ -1392,9 +1104,6 @@ ActiveRecord::Base.transaction do
       "moves"=>[
          "vicegrip"
       ],
-      "curve"=>1,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "128"=>{
       "name"=>"Tauros",
@@ -1405,23 +1114,15 @@ ActiveRecord::Base.transaction do
          "tackle",
          "horn attack"
       ],
-      "curve"=>1,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "129"=>{
       "name"=>"Magikarp",
       "attack"=>10,
       "defense"=>55,
-      "evolveLevel"=>20,
-      "evolveTo"=>"130",
       "poke_type"=>"water",
       "moves"=>[
          "tackle"
       ],
-      "curve"=>1,
-      "levels"=> [5, 15],
-      "probability"=> 15
     },
     "130"=>{
       "name"=>"Gyarados",
@@ -1433,7 +1134,6 @@ ActiveRecord::Base.transaction do
          "twister",
          "hydro pump"
       ],
-      "curve"=>1
     },
     "131"=>{
       "name"=>"Lapras",
@@ -1446,9 +1146,6 @@ ActiveRecord::Base.transaction do
          "ice beam",
          "hydro pump"
       ],
-      "curve"=>1,
-      "levels"=> [5, 15],
-      "probability"=> 4
     },
     "133"=>{
       "name"=>"Eevee",
@@ -1459,14 +1156,9 @@ ActiveRecord::Base.transaction do
          "tackle",
          "bite"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 35],
-      "probability"=> 8
     },
     "135"=>{
       "name"=>"Jolteon",
-      "levels"=> [5, 15],
-      "probability"=> 4,
       "attack"=>65,
       "defense"=>60,
       "poke_type"=>"electric",
@@ -1475,7 +1167,6 @@ ActiveRecord::Base.transaction do
          "thundershock",
          "thunder"
       ],
-      "curve"=>1.6
     },
     "136"=>{
       "name"=>"Flareon",
@@ -1488,7 +1179,6 @@ ActiveRecord::Base.transaction do
          "bite",
          "smog"
       ],
-      "curve"=>1.6
     },
     "137"=>{
       "name"=>"Porygon",
@@ -1500,16 +1190,11 @@ ActiveRecord::Base.transaction do
          "psybeam",
          "zap cannon"
       ],
-      "curve"=>1.6,
-      "levels"=> [5, 45],
-      "probability"=> 4
     },
     "138"=>{
       "name"=>"Omanyte",
       "attack"=>40,
       "defense"=>100,
-      "evolveLevel"=>40,
-      "evolveTo"=>"139",
       "poke_type"=>"rock",
       "moves"=>[
          "constrict",
@@ -1517,7 +1202,6 @@ ActiveRecord::Base.transaction do
          "water gun",
          "mud shot"
       ],
-      "curve"=>1.6
     },
     "139"=>{
       "name"=>"Omastar",
@@ -1530,20 +1214,16 @@ ActiveRecord::Base.transaction do
          "water gun",
          "mud shot"
       ],
-      "curve"=>1.6
     },
     "140"=>{
       "name"=>"Kabuto",
       "attack"=>80,
       "defense"=>90,
-      "evolveLevel"=>40,
-      "evolveTo"=>"141",
       "poke_type"=>"rock",
       "moves"=>[
          "scratch",
          "mud shot"
       ],
-      "curve"=>1.6
     },
     "141"=>{
       "name"=>"Kabutops",
@@ -1556,7 +1236,6 @@ ActiveRecord::Base.transaction do
          "slash",
          "ancientpower"
       ],
-      "curve"=>1.6
     },
     "142"=>{
       "name"=>"Aerodactyl",
@@ -1568,7 +1247,6 @@ ActiveRecord::Base.transaction do
          "bite",
          "ancientpower"
       ],
-      "curve"=>1
     },
     "143"=>{
       "name"=>"Snorlax",
@@ -1581,9 +1259,6 @@ ActiveRecord::Base.transaction do
          "snore",
          "body slam"
       ],
-      "curve"=>1,
-      "levels"=> [25, 25],
-      "probability"=> 2
     },
     "144"=>{
       "name"=>"Articuno",
@@ -1596,9 +1271,6 @@ ActiveRecord::Base.transaction do
          "ice beam",
          "blizzard"
       ],
-      "curve"=>1,
-      "levels"=> [50, 50],
-      "probability"=> 1
     },
     "145"=>{
       "name"=>"Zapdos",
@@ -1611,9 +1283,6 @@ ActiveRecord::Base.transaction do
          "drill peck",
          "thunder"
       ],
-      "curve"=>1,
-      "levels"=> [50, 50],
-      "probability"=> 1
     },
     "146"=>{
       "name"=>"Moltres",
@@ -1626,37 +1295,26 @@ ActiveRecord::Base.transaction do
          "flamethrower",
          "heat wave"
       ],
-      "curve"=>1,
-      "levels"=> [50, 50],
-      "probability"=> 1
     },
     "147"=>{
       "name"=>"Dratini",
       "attack"=>64,
       "defense"=>45,
-      "evolveLevel"=>30,
-      "evolveTo"=>"148",
       "poke_type"=>"dragon",
       "moves"=>[
          "twister",
          "slam"
       ],
-      "curve"=>1,
-      "levels"=> [10, 20],
-      "probability"=> 6
     },
     "148"=>{
       "name"=>"Dragonair",
       "attack"=>84,
       "defense"=>65,
-      "evolveLevel"=>55,
-      "evolveTo"=>"149",
       "poke_type"=>"dragon",
       "moves"=>[
          "twister",
          "slam"
       ],
-      "curve"=>1
     },
     "149"=>{
       "name"=>"Dragonite",
@@ -1668,7 +1326,6 @@ ActiveRecord::Base.transaction do
          "slam",
          "wing attack"
       ],
-      "curve"=>1
     },
     "150"=>{
       "name"=>"Mewtwo",
@@ -1680,9 +1337,6 @@ ActiveRecord::Base.transaction do
          "swift",
          "psychic"
       ],
-      "curve"=>1,
-      "levels"=> [70, 70],
-      "probability"=> 1
     },
     "151"=>{
       "name"=>"Mew",
@@ -1695,19 +1349,11 @@ ActiveRecord::Base.transaction do
          "psychic",
          "ancientpower"
       ],
-      "curve"=>1.3,
-      "levels"=> [50, 50],
-      "probability"=> 0.3
     }
   }
 
   pokemon = pokemon.map do |num, stats|
-    stats['number'] = num
-    stats['evolve_level'] = stats['evolveLevel']
-    stats.delete('evolveLevel')
-    stats['evolve_to'] = stats['evolveTo']
-    stats.delete('evolveTo')
-
+    stats["image_url"] = "/assets/pokemon_snaps/#{num}.png"
     stats
   end
 

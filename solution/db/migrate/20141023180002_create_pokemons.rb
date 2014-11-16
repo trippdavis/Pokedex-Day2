@@ -1,17 +1,12 @@
 class CreatePokemons < ActiveRecord::Migration
   def change
     create_table :pokemons do |t|
-      t.string :name
-      t.integer :number
-      t.integer :attack
-      t.integer :defense
-      t.integer :evolve_level
-      t.integer :evolve_to
-      t.string :poke_type
-      t.string :moves
-      t.string :levels
-      t.integer :probability
-      t.float :curve
+      t.string :name, null: false
+      t.integer :attack, null: false
+      t.integer :defense, null: false
+      t.string :poke_type, null: false
+      t.string :moves, null: false
+      t.string :image_url, null: false
 
       t.timestamps
     end

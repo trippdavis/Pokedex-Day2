@@ -11,33 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106194448) do
+ActiveRecord::Schema.define(version: 20141105185704) do
 
   create_table "pokemons", force: true do |t|
-    t.string   "name"
-    t.integer  "number"
-    t.integer  "attack"
-    t.integer  "defense"
-    t.integer  "evolve_level"
-    t.integer  "evolve_to"
-    t.string   "poke_type"
-    t.string   "moves"
-    t.string   "levels"
-    t.integer  "probability"
-    t.float    "curve"
+    t.string   "name",       null: false
+    t.integer  "attack",     null: false
+    t.integer  "defense",    null: false
+    t.string   "poke_type",  null: false
+    t.string   "moves",      null: false
+    t.string   "image_url",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url"
   end
 
   create_table "toys", force: true do |t|
-    t.integer  "pokemon_id"
-    t.string   "name"
-    t.integer  "price"
-    t.integer  "happiness"
+    t.integer  "pokemon_id", null: false
+    t.string   "name",       null: false
+    t.integer  "price",      null: false
+    t.integer  "happiness",  null: false
+    t.string   "image_url",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url"
   end
 
   add_index "toys", ["pokemon_id"], name: "index_toys_on_pokemon_id"

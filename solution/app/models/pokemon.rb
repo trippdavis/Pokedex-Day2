@@ -1,8 +1,4 @@
-require 'byebug'
-
 class Pokemon < ActiveRecord::Base
-  serialize :levels, Array
-	serialize :moves, Array
   TYPES = [
     "fire",
     "electric",
@@ -22,21 +18,12 @@ class Pokemon < ActiveRecord::Base
     "steel"
   ].sort
 
-  validates :name, :poke_type, :number, presence: true
-  validates :poke_type, inclusion: { in: TYPES }
+  serialize :levels, Array
+  serialize :moves, Array
 
   has_many :toys
 
-  def image_url
-    if read_attribute(:image_url)
-      super
-    else
-      number = self.number.to_s
-      while number.length < 3
-        number = '0' + number
-      end
-
-      "/assets/pokemon_snaps/#{number}.png"
-    end
-  end
+  validates :attack, :defense, :image_url, :name, :moves, :poke_type, presence: true
+  validates :attack, :defense, numericality: true
+  validates :poke_type, inclusion: { in: TYPES }
 end
