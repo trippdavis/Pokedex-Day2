@@ -39,7 +39,7 @@ Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
   var $li = $('<li class="poke-list-item">');
   $li.data('id', pokemon.get('id'));
 
-  var shortInfo = ['name', 'number', 'poke_type'];
+  var shortInfo = ['name', 'poke_type'];
   shortInfo.forEach(function (attr) {
     $li.append(attr + ': ' + pokemon.get(attr) + '<br>');
   });
@@ -55,12 +55,11 @@ Pokedex.RootView.prototype.createPokemon = function (attrs, callback) { // I
 
   // Have an alert pop-up which confirms saving when that is complete.
   // Don't add the new pokemon until it is saved properly.
-	var that = this;
   poke.save(attrs, {
-    success: function() {
-      that.pokes.add(poke)
+    success: (function() {
+      this.pokes.add(poke)
       callback && callback.call(this, poke);
-    }
+    }).bind(this)
   });
 
   return poke;
@@ -88,37 +87,28 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
   // on success, render toys and append to $pokeDetail
   this.$pokeDetail.empty();
   this.$toyDetail.empty();
-  var that = this;
 
   pokemon.fetch({ // III
-    success: function() {
+    success: (function() {
       var $toys = $('<ul class="toys"></ul>');
       $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
 
-      pokemon.toys().each(function(toy) { // III
-        that.renderToyListItem(toy, $toys);
-      });
+      pokemon.toys().each((function(toy) { // III
+        this.renderToyListItem(toy, $toys);
+      }).bind(this));
 
-      that.$pokeDetail.append($toys);
-    }
+      this.$pokeDetail.append($toys);
+    }).bind(this)
   });
-
-	var num = pokemon.get('number');
-
-  // num can be string or number depending on whether it came
-  // from the server or not #=> convert to str if it's a number
-  if(typeof num === 'number') {
-    num = "" + num;
-  }
-	while(num.length < 3) {
-    num = '0' + num;
-	}
 
   var $detail = $('<div class="detail">');
 
+  // Show the image
 	$detail.append('<img src="' + pokemon.get('image_url') + '"><br>');
-	for(var attr in pokemon.attributes) {
-		if(pokemon.get(attr) && attr !== 'id' && attr !== 'image_url') {
+
+  // Show the attributes
+	for (var attr in pokemon.attributes) {
+		if (pokemon.get(attr) && attr !== 'id' && attr !== 'image_url') {
 			$detail.append('<span style="font-weight:bold;">' + attr + ':</span> ' +
 						pokemon.get(attr) + '<br>');
 		}
@@ -127,7 +117,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
 	this.$pokeDetail.html($detail);
 };
 
-Pokedex.RootView.prototype.renderToyDetail = function(toy) { // III
+Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   this.$toyDetail.empty();
 
   var $detail = $('<div class="detail">');
@@ -145,7 +135,7 @@ Pokedex.RootView.prototype.renderToyDetail = function(toy) { // III
   this.$toyDetail.html($detail);
 };
 
-Pokedex.RootView.prototype.renderToyForm = function($list) {
+Pokedex.RootView.prototype.renderToyForm = function ($list) {
   var $li = $('<li class="toy-list-item">');
   var $form = $('<form>');
   ['name', 'price', 'happiness'].forEach(function(el) {
@@ -189,13 +179,12 @@ Pokedex.RootView.prototype.selectToyFromList = function (event) { // III
 
 Pokedex.RootView.prototype.submitPokemonForm = function (event) { // II
   event.preventDefault();
-  var pokeAttrs = $(event.target).serializeJSON()['pokemon'];
+  var pokeAttrs = ($(event.target).serializeJSON())['pokemon'];
 
-  var that = this;
-  this.createPokemon(pokeAttrs, function (pokemon) {
-    that.renderPokemonDetail(pokemon);
-    that.addPokemonToList(pokemon);
-  });
+  this.createPokemon(pokeAttrs, (function (pokemon) {
+    this.renderPokemonDetail(pokemon);
+    this.addPokemonToList(pokemon);
+  }).bind(this));
 };
 
 Pokedex.RootView.prototype.submitToyForm = function (event) {
