@@ -4,8 +4,9 @@
 
 In this project, we'll write an app to manage your `Pokemon` and their
 `Toy`s. We've already setup migrations/models/controllers for you to
-start with in a skeleton that we will email to you at the beginning of the day. 
-**Set things up with a `bundle install`, then `rake db:create db:migrate db:seed`**.
+start with in a skeleton that we will email to you at the beginning of
+the day.  **Set things up with a `bundle install`, then `rake
+db:create db:migrate db:seed`**.
 
 Here's the schema:
 
@@ -67,9 +68,9 @@ for you.
 
 ## Phase 0A: JBuilder
 
-In `app/views/pokemon/` fill in the three empty jbuilder files - one 
-each for `show` and `index`, and a partial called `_pokemon`. Your 
-`show` and `index` files should both call the partial to render 
+In `app/views/pokemon/` fill in the three empty jbuilder files - one
+each for `show` and `index`, and a partial called `_pokemon`. Your
+`show` and `index` files should both call the partial to render
 individual Pokemon. Render all the attributes of the `Pokemon`:
 
 ```json
@@ -82,8 +83,9 @@ individual Pokemon. Render all the attributes of the `Pokemon`:
   "poke_type":"bug" }
 ```
 
-Refer to [this excellent simple documentation][jbuilder-doc]. You'll use `json.array!` `json.partial!` and `json.extract` in your
-JBuilder templates. These are all the major JBuilder options!
+Refer to [this excellent simple documentation][jbuilder-doc]. You'll
+use `json.array!` `json.partial!` and `json.extract` in your JBuilder
+templates. These are all the major JBuilder options!
 
 **Test your views by visiting `/pokemon/123` and `/pokemon`. Call your
 TA to review.**
@@ -92,39 +94,45 @@ TA to review.**
 
 ## Phase 0B: `Models.Pokemon` and `Collections.Pokemon`
 
-In `app/assets/javascripts/pokedex-0.js`, let's write a `Pokemon` model.
-The purpose of this model class is to allow us to easily interact with our
-Rails API without having to manually make `$.ajax` requests each time we want
-to fetch data from the server or push changes. This `ajax` work will be done for
-us by a base class, `Backbone.Model`. 
+In `app/assets/javascripts/pokedex-0.js`, let's write a `Pokemon`
+model.  The purpose of this model class is to allow us to easily
+interact with our Rails API without having to manually make `$.ajax`
+requests each time we want to fetch data from the server or push
+changes. This `ajax` work will be done for us by a base class,
+`Backbone.Model`.
 
-So, let's write our new `Pokedex.Models.Pokemon` class. Instead of just creating
-a new function, let's `extend` the base class: `Backbone.Model`. Now, we can
-selectively overwrite and add properties and functions. Since most of the base class
-will perfectly fit our needs, we only need to overwrite one default property: `urlRoot`.
+So, let's write our new `Pokedex.Models.Pokemon` class. Instead of
+just creating a new function, let's `extend` the base class:
+`Backbone.Model`. Now, we can selectively overwrite and add properties
+and functions. Since most of the base class will perfectly fit our
+needs, we only need to overwrite one default property: `urlRoot`.
 
-The `urlRoot` property specifies the base path of where the `ajax` operations need to go.
-For example: creating a new pokemon would necessitate a `POST` to `/pokemon`, and
-updating the first pokemon  would need a `PATCH` to /pokemon/1. The _root_ of all
-operations involving pokemon is `/pokemon`, so this will be our `urlRoot`.
+The `urlRoot` property specifies the base path of where the `ajax`
+operations need to go.  For example: creating a new pokemon would
+necessitate a `POST` to `/pokemon`, and updating the first pokemon
+would need a `PATCH` to /pokemon/1. The _root_ of all operations
+involving pokemon is `/pokemon`, so this will be our `urlRoot`.
 
-Now we also need to write a collection: `Pokedex.Collections.Pokemon`. This class
-will store all of our `Pokemon` models and allow us to manage them as a group. To 
-write this class, like our model, we will `extend` a `Backbone` base class, `Backbone.Collection`.
-We will need to overwrite the `url` and `model` properties. The `url` will be the same
-value as `Pokedex.Models.Pokemon`'s `urlRoot` property. The `model` property will be set to
-the `Pokemon` model we created above. This tells the base class that when we `fetch` all
-the pokemon from the server and store them in individual models, we should use instances of
-the `Pokemon` model as the class to store them in.
+Now we also need to write a collection:
+`Pokedex.Collections.Pokemon`. This class will store all of our
+`Pokemon` models and allow us to manage them as a group. To write this
+class, like our model, we will `extend` a `Backbone` base class,
+`Backbone.Collection`.  We will need to overwrite the `url` and
+`model` properties. The `url` will be the same value as
+`Pokedex.Models.Pokemon`'s `urlRoot` property. The `model` property
+will be set to the `Pokemon` model we created above. This tells the
+base class that when we `fetch` all the pokemon from the server and
+store them in individual models, we should use instances of the
+`Pokemon` model as the class to store them in.
 
 We've written and defined a "view" class `Pokedex.RootView`. This
 class will be responsible for listening to user clicks and displaying
 Pokemon data. Look at the class, but there is nothing to write for it
 just yet.
 
-**Test your model and collection.** Navigate to the [root url](http://localhost:3000).
-Once you are there, in the Chrome console, run the following commands and ensure they work
-as expected.
+**Test your model and collection.** Navigate to the
+[root url](http://localhost:3000).  Once you are there, in the Chrome
+console, run the following commands and ensure they work as expected.
 
 ```js
 // Should print out the attributes of Pokemon #1
