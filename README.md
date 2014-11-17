@@ -92,7 +92,31 @@ TA to review.**
 
 ## Phase 0B: `Models.Pokemon` and `Collections.Pokemon`
 
-In `app/assets/javascripts/pokedex-0.js`, write a `Pokemon` model
+In `app/assets/javascripts/pokedex-0.js`, let's write a `Pokemon` model.
+The purpose of this model class is to allow us to easily interact with our
+Rails API without having to manually make `$.ajax` requests each time we want
+to fetch data from the server or push changes. This `ajax` work will be done for
+us by a base class, `Backbone.Model`. 
+
+So, let's write our new `Pokedex.Models.Pokemon` class. Instead of just creating
+a new function, let's `extend` the base class: `Backbone.Model`. Now, we can
+selectively overwrite and add properties and functions. Since most of the base class
+will perfectly fit our needs, we only need to overwrite one default property: `urlRoot`.
+
+The `urlRoot` property specifies the base path of where the `ajax` operations need to go.
+For example: creating a new pokemon would necessitate a `POST` to `/pokemon`, and
+updating the first pokemon  would need a `PATCH` to /pokemon/1. The _root_ of all
+operations involving pokemon is `/pokemon`, so this will be our `urlRoot`.
+
+Now we also need to write a collection: `Pokedex.Collections.Pokemon`. This class
+will store all of our `Pokemon` models and allow us to manage them as a group. To 
+write this class, like our model, we will `extend` a `Backbone` base class, `Backbone.Collection`.
+We will need to overwrite the `url` and `model` properties. The `url` will be the same
+value as `Pokedex.Models.Pokemon`'s `urlRoot` property. The `model` property will be set to
+the `Pokemon` model we created above. This tells the base class that when we `fetch` all
+the pokemon from the server and store them in individual models, we should use instances of
+the `Pokemon` model as the class to store them in.
+
 class, saving it in the `Pokedex.Models` namespace. To start, you only
 need to set the `urlRoot` property. Also write a `Pokemon` collection
 class. You only need to set the `model` and `url` properties.
@@ -158,10 +182,9 @@ What we're going to do next is allow ourselves to see more detail
 about a `Pokemon` by selecting it from the index.
 
 We're going to show the details of the `Pokemon` in the
-`this.$pokeDetail`. In `pokedex-1B.js`, create a `div.detail`. Add an
-image tag with the Pokemon's photo; iterate through all the Pokemon
-properties, adding each to the `div.detail`. Add the `div.detail` to
-`this.$pokeDetail`.
+`this.$pokeDetail`. Create a `div.detail`. Add an image tag with the
+Pokemon's photo; iterate through all the Pokemon properties, adding
+each to the `div.detail`. Add the `div.detail` to `this.$pokeDetail`.
 
 You can verify this is working:
 
@@ -183,7 +206,7 @@ can pass that pokemon object to `renderPokemonDetail`.
 
 To do this, modify your `addPokemonToList` method to also set a `id`
 data-attribute on the Pokemon list item. Next, in the `RootView`
-constructor (`pokedex-0.js`), write a click handler that calls
+constructor, write a click handler that calls
 `this.selectPokemonFromList`. In the click handler, recover the `id`
 from `event.target`; look up the `Pokemon` in `this.pokes` with the
 id. Finally, use `renderPokemonDetail` to display the Pokemon.
