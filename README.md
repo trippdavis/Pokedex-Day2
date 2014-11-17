@@ -135,9 +135,9 @@ Pokedex.Test.testIndex();
 
 ## Phase 1A: `refreshPokemon` and `addPokemonToList`
 
-**addPokemonToList**
+**Pokedex.RootView.prototype.addPokemonToList**
 
-The first thing to do is get your app displaying `Pokemon`. To do
+The first thing to do is get your `RootView` displaying `Pokemon`. To do
 this, we should first fill out `addPokemonToList(pokemon)` method in
 `pokedex-1A.js`. Create an `li` with jQuery, and list a few high-level
 details of the Pokemon: `name` and `poke_type`. This is just an index
@@ -161,7 +161,7 @@ pokemon.fetch({
 
 Does a Pokemon get added to the list?
 
-**refreshPokemon**
+**Pokedex.RootView.prototype.refreshPokemon**
 
 Next, write `refreshPokemon` method. This method should fetch all the
 Pokemon by fetching `this.pokes`. Iterate through the `this.pokes`,
@@ -172,7 +172,7 @@ should appear!
 
 ## Phase 1B: `renderPokemonDetail` and `selectPokemonFromList`
 
-**renderPokemonDetail**
+**Pokedex.RootView.prototype.renderPokemonDetail**
 
 What we're going to do next is allow ourselves to see more detail
 about a `Pokemon` by selecting it from the index.
@@ -193,7 +193,7 @@ pokemon.fetch({
 });
 ```
 
-**selectPokemonFromList**
+**Pokedex.RootView.prototype.selectPokemonFromList**
 
 We want to call `renderPokemonDetail` in response to clicks. However,
 when a user clicks on a `Pokemon` list item in the `this.$pokeList`,
@@ -212,7 +212,7 @@ details about it.**
 
 ## Phase IC: `createPokemon` and `submitPokemonForm`
 
-**createPokemon**
+**Pokedex.RootView.prototype.createPokemon**
 
 As you encounter new Pokemon, you will want to record your findings
 and share your wisdom with other poke-scientists. For this reason, we
@@ -252,7 +252,7 @@ Pokedex.rootView.createPokemon({
 });
 ```
 
-**submitPokemonForm**
+**Pokedex.RootView.prototype.submitPokemonForm**
 
 Again, we want to improve our user interface so the user can create a
 Pokemon through the form, not the console.
@@ -327,7 +327,7 @@ how parse works review [the reading][parse-reading].
 
 ## Phase 2C: Displaying Toys in Pokemon Detail View
 
-**renderPokemonDetail**
+**Pokedex.RootView.prototype.renderPokemonDetail**
 
 First, in your `renderPokemonDetail` method (in `pokedex-1B.js`),
 build and append a `ul.toys` to your `div.detail` that you are
@@ -339,7 +339,7 @@ Next, in the `renderPokemonDetail`, instigate a fetch of the
 the success callback, just `console.log` each of the fetched
 `pokemon.toys()`. Verify that the toys are fetched properly.
 
-**addToyToList**
+**Pokedex.RootView.prototype.addToyToList**
 
 Instead of `console.log`ing the toys, we want to add them to the toys
 list ul we've built. To do this, we'll write an `addToyToList(toy)`
@@ -352,7 +352,7 @@ the `ul.toys` inside of the `this.pokeDetail` element.
 Last, modify `renderPokemonDetail` a last time to call `addToyToList`
 for each toy, instead of logging.
 
-**renderToyDetail and selectToyFromList**
+**Pokedex.RootView.prototype.renderToyDetail and Pokedex.RootView.prototype.selectToyFromList**
 
 We want to be able to show more detailed attributes of the Toy; in
 particular its image. Write the `renderToyDetail(toy)` method, which
