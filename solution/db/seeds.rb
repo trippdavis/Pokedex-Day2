@@ -26,6 +26,12 @@ def create_random_toy!(pokemon)
       http://placekitten.com/200/300?image=8
       http://placekitten.com/200/300?image=9
       http://placekitten.com/200/300?image=10
+      http://placekitten.com/200/300?image=11
+      http://placekitten.com/200/300?image=12
+      http://placekitten.com/200/300?image=13
+      http://placekitten.com/200/300?image=14
+      http://placekitten.com/200/300?image=15
+      http://placekitten.com/200/300?image=16
     ).sample
   )
 end
