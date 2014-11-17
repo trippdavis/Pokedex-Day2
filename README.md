@@ -314,16 +314,43 @@ don't. You can write an if statement right in your JBuilder!
 
 ## Phase 2B: Write a `Toy` Model, `PokemonToys` Collection
 
-Now that we're sending down nested JSON from Rails, lets unbox
-the nested toy data and populate a `PokemonToys` collection. 
-Store this collection in a new property on the `Pokemon` model called `_toys`
-and write an instance method `toys` that returns this collection.
+We're ready to write our `Toy` model and `PokemonToys` collection in
+`pokedex-0.js`. At this point, they simply extend their respective
+Backbone classes.
 
-The json object we return from `parse` will be used to populate
-the attributes of a `Pokemon` so lets clean up the raw json
-response by deleting the toys property from the incoming json
-response before returning it. If you're still a bit fuzzy on
-how parse works review [the reading][parse-reading].
+On the server side a Pokemon model has a `has_many` toys association.
+Backbone does not have a built in mechanism for representing
+associations, so we'll wire up our own. Write a `toys` method on
+`Pokemon` that memoizes a `PokemonToys` collection. Javascript doesn't
+have an `||=` operator so we'll need to check: if `this._toys` is
+undefined, set `this._toys` equal to a new instance of `PokemonToys`.
+Finally return `this._toys`.
+
+Now `Pokemon` have a `toys` association. You might be wondering:
+how this association collection is populated?
+
+The Backbone `parse` method gives us the opportunity to massage an
+incoming JSON object into the attributes our Backbone model will have.
+It also happens to be a great place to intercept any nested data and
+use that data to populate associated collections.
+
+Write a `parse(payload)` method on `Pokemon`. `payload` here is the
+raw JSON object. The `parse` method will be called by backbone when
+parsing a single model, or a collection of models returned from the
+server during a fetch. **Remember** we're including `toys` in the
+`show` action, but _not_ the `index` action.  Our `parse` method needs
+to handle either case. If `payload` has a `toys` property, use the
+array of `toys` to populate the `PokemonToys` collection returned by
+the `toys()` method using [`set`][collection-set].
+
+Finally, we must return a JSON object from `parse`. This object will
+be used to set the attributes of the `Pokemon`. We prefer using our
+shiny new `toys()` association over a raw array of toy JSON objects,
+so lets be sure to delete the toys property from the `payload` before
+returning the `payload`.
+
+If you're still a bit fuzzy on how parse works review [the
+reading][parse-reading].
 
 ## Phase 2C: Displaying Toys in Pokemon Detail View
 
@@ -363,4 +390,5 @@ will need a `toy-id` data-attribute as before, but you should also set
 a `pokemon-id`, so that you can look up the `toy-id` in the
 appropriate collection of `pokemon.toys()`.
 
+[collection-set]: http://backbonejs.org/#Collection-set
 [parse-reading]: https://github.com/appacademy/backbone-curriculum/blob/268498c3e594fa9bfa5f87825295ca8dd1d84d60/w7d3/backbone-model-ii.md
