@@ -5,15 +5,6 @@ window.Pokedex.Collections = {};
 Pokedex.Models.Pokemon = Backbone.Model.extend({
   urlRoot: '/pokemon',
 
-  // TODO: Write this in Phase 3.
-  // create Pokemon Backbone model
-  //
-  // #toys function - memoize collection with _toys. return _toys
-  //   or new Toys collection
-  //
-  // #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
-  //   and check if there is a 'pokemon' key. If so, call #set on our toys collection
-  //   with the value of the pokemon key.
   parse: function (payload) {
     if (payload.toys) {
       this.toys().set(payload.toys),
@@ -30,7 +21,6 @@ Pokedex.Models.Pokemon = Backbone.Model.extend({
   }
 });
 
-// TODO: Write this in Phase 3.
 Pokedex.Models.Toy = Backbone.Model.extend({
   urlRoot: '/toys'
 });
@@ -40,7 +30,6 @@ Pokedex.Collections.Pokemon = Backbone.Collection.extend({
   url: '/pokemon'
 });
 
-// TODO: Write this in Phase 3.
 Pokedex.Collections.PokemonToys = Backbone.Collection.extend({
   model: Pokedex.Models.Toy,
   initialize: function(models, pokemon) {
