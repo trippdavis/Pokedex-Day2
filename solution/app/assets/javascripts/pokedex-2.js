@@ -16,7 +16,7 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   this.$toyDetail.html($detail);
 };
 
-Pokedex.RootView.prototype.renderToyListItem = function (toy, $list) { // III
+Pokedex.RootView.prototype.addToyToList = function (toy, $list) {
   var $li = $('<li class="toy-list-item">');
   $li.data('id', toy.get('id'));
   $li.data('pokemon-id', toy.get('pokemon_id'));
@@ -29,7 +29,7 @@ Pokedex.RootView.prototype.renderToyListItem = function (toy, $list) { // III
   $list.append($li);
 };
 
-Pokedex.RootView.prototype.selectToyFromList = function (event) { // III
+Pokedex.RootView.prototype.selectToyFromList = function (event) {
   var $target = $(event.target);
 
   var toyId = $target.data('id');

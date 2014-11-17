@@ -7,7 +7,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
       $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
 
       pokemon.toys().each((function(toy) {
-        this.renderToyListItem(toy, $toys);
+        this.addToyToList(toy, $toys);
       }).bind(this));
 
       this.$pokeDetail.append($toys);

@@ -1,6 +1,4 @@
-Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
-  // build LI
-  // apped it to $pokeList
+Pokedex.RootView.prototype.addPokemonToList = function (pokemon) {
   var $li = $('<li class="poke-list-item">');
   $li.data('id', pokemon.get('id'));
 
@@ -12,9 +10,7 @@ Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
   this.$pokeList.append($li);
 };
 
-Pokedex.RootView.prototype.refreshPokemon = function (callback) { // I
-  // fetch collection
-  // print names async
+Pokedex.RootView.prototype.refreshPokemon = function (callback) {
   this.pokes.fetch({
     success: (function () {
       this.$pokeList.empty();

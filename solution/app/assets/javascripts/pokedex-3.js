@@ -20,6 +20,6 @@ Pokedex.RootView.prototype.submitToyForm = function (event) {
   var that = this;
   this.createToy(toyAttrs, function (toy) {
     that.renderToyDetail(toy);
-    that.renderToyListItem(toy);
+    that.addToyToList(toy);
   });
 };
