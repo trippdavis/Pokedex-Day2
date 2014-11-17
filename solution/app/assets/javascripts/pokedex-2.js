@@ -1,3 +1,15 @@
+Pokedex.RootView.prototype.addToyToList = function (toy) {
+  var $li = $('<li class="toy-list-item">');
+  $li.data('id', toy.get('id'));
+
+  var shortInfo = ['name', 'happiness', 'price'];
+  shortInfo.forEach(function (attr) {
+    $li.append(attr + ': ' + toy.get(attr) + '<br>');
+  });
+
+  this.$pokeDetail.find(".toys").append($li);
+};
+
 Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   this.$toyDetail.empty();
 
@@ -14,19 +26,6 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   }
 
   this.$toyDetail.html($detail);
-};
-
-Pokedex.RootView.prototype.addToyToList = function (toy, $list) {
-  var $li = $('<li class="toy-list-item">');
-  $li.data('id', toy.get('id'));
-  $li.data('pokemon-id', toy.get('pokemon_id'));
-
-  var shortInfo = ['name', 'happiness', 'price'];
-  shortInfo.forEach(function (attr) {
-    $li.append(attr + ': ' + toy.get(attr) + '<br>');
-  });
-
-  $list.append($li);
 };
 
 Pokedex.RootView.prototype.selectToyFromList = function (event) {
