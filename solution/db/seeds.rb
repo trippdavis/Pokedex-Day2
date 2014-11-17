@@ -9,6 +9,27 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+def create_random_toy!(pokemon)
+  Toy.create!(
+    pokemon_id: pokemon.id,
+    name: SecureRandom.urlsafe_base64(8),
+    price: (1..100).to_a.sample,
+    happiness: (1..100).to_a.sample,
+    image_url: %w(
+      http://placekitten.com/200/300?image=1
+      http://placekitten.com/200/300?image=2
+      http://placekitten.com/200/300?image=3
+      http://placekitten.com/200/300?image=4
+      http://placekitten.com/200/300?image=5
+      http://placekitten.com/200/300?image=6
+      http://placekitten.com/200/300?image=7
+      http://placekitten.com/200/300?image=8
+      http://placekitten.com/200/300?image=9
+      http://placekitten.com/200/300?image=10
+    ).sample
+  )
+end
+
 ActiveRecord::Base.transaction do
   pokemon = {
     "1"=>{
@@ -1364,4 +1385,7 @@ ActiveRecord::Base.transaction do
   end
 
   Pokemon.create!(pokemon.shuffle)
+  Pokemon.all.each do |pokemon|
+    3.times { create_random_toy!(pokemon) }
+  end
 end
