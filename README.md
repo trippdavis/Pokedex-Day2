@@ -326,7 +326,7 @@ have an `||=` operator so we'll need to check: if `this._toys` is
 undefined, set `this._toys` equal to a new instance of `PokemonToys`.
 Finally return `this._toys`.
 
-Now `Pokemon` have a `toys` association. You might be wondering:
+Now each `Pokemon` has a `toys` association. You might be wondering:
 how this association collection is populated?
 
 The Backbone `parse` method gives us the opportunity to massage an
