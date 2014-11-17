@@ -315,8 +315,9 @@ don't. You can write an if statement right in your JBuilder!
 ## Phase 2B: Write a `Toy` Model, `PokemonToys` Collection
 
 We're ready to write our `Toy` model and `PokemonToys` collection in
-`pokedex-0.js`. At this point, they simply extend their respective
-Backbone classes.
+`pokedex-0.js`. At this point, they need only extend their respective
+Backbone classes. Additionally, set the `model` property of
+`PokemonToys`.
 
 On the server side a Pokemon model has a `has_many` toys association.
 Backbone does not have a built in mechanism for representing
@@ -331,8 +332,8 @@ how this association collection is populated?
 
 The Backbone `parse` method gives us the opportunity to massage an
 incoming JSON object into the attributes our Backbone model will have.
-`parse` also happens to be a great place to intercept any nested data and
-use that data to populate associated collections.
+`parse` also happens to be a great place to intercept any nested data
+and use that data to populate associated collections.
 
 Write a `parse(payload)` method on `Pokemon`. `payload` here is the
 raw JSON object. The `parse` method will be called by backbone when
@@ -351,6 +352,18 @@ returning the `payload`.
 
 If you're still a bit fuzzy on how parse works review [the
 reading][parse-reading].
+
+To test that `toys` and `parse` are up and running, try this in the
+Chrome console:
+
+```js
+var pokemon = new Pokedex.Models.Pokemon({ id: 1 });
+pokemon.fetch({
+  success: function () {
+    console.log(pokemon.toys().length); // SHOULD BE 3+
+  }
+});
+```
 
 ## Phase 2C: Displaying Toys in Pokemon Detail View
 
