@@ -297,7 +297,7 @@ and render the partial (using `json.partial!`) for each of the toys of
 the Pokemon.
 
 There is a caveat: we want to display the toys when we go to
-`/pokemons/123`, **but not when we go to `/pokemons`**. When you are
+`/pokemon/123`, **but not when we go to `/pokemon`**. When you are
 writing a large application, it is not possible to send *all* the data
 down in a single JSON response. Therefore, `/pokemons` should just
 list the pokemons, while fetching a single Pokemon can additionally
