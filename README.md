@@ -336,7 +336,7 @@ undefined, set `this._toys` equal to a new instance of `PokemonToys`.
 Finally return `this._toys`.
 
 Now each `Pokemon` has a `toys` association. You might be wondering:
-how this association collection is populated?
+how is this association collection populated?
 
 The Backbone `parse` method gives us the opportunity to massage an
 incoming JSON object into the attributes our Backbone model will have.
@@ -350,13 +350,13 @@ server during a fetch. **Remember** we're including `toys` in the
 `show` action, but _not_ the `index` action.  Our `parse` method needs
 to handle either case. If `payload` has a `toys` property, use the
 array of `toys` to populate the `PokemonToys` collection returned by
-the `toys()` method using [`set`][collection-set].
+the `toys()` method using [`Collection#set`][collection-set].
 
 Finally, we must return a JSON object from `parse`. This object will
 be used to set the attributes of the `Pokemon`. We prefer using our
 shiny new `toys()` association over a raw array of toy JSON objects,
-so lets be sure to delete the toys property from the `payload` before
-returning the `payload`.
+so lets be sure to `delete` the `toys` property from the `payload`
+before returning the `payload`.
 
 If you're still a bit fuzzy on how parse works review [the
 reading][parse-reading].
