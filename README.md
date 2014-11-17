@@ -158,9 +158,10 @@ What we're going to do next is allow ourselves to see more detail
 about a `Pokemon` by selecting it from the index.
 
 We're going to show the details of the `Pokemon` in the
-`this.$pokeDetail`. Create a `div.detail`. Add an image tag with the
-Pokemon's photo; iterate through all the Pokemon properties, adding
-each to the `div.detail`. Add the `div.detail` to `this.$pokeDetail`.
+`this.$pokeDetail`. In `pokedex-1B.js`, create a `div.detail`. Add an
+image tag with the Pokemon's photo; iterate through all the Pokemon
+properties, adding each to the `div.detail`. Add the `div.detail` to
+`this.$pokeDetail`.
 
 You can verify this is working:
 
@@ -182,7 +183,7 @@ can pass that pokemon object to `renderPokemonDetail`.
 
 To do this, modify your `addPokemonToList` method to also set a `id`
 data-attribute on the Pokemon list item. Next, in the `RootView`
-constructor, write a click handler that calls
+constructor (`pokedex-0.js`), write a click handler that calls
 `this.selectPokemonFromList`. In the click handler, recover the `id`
 from `event.target`; look up the `Pokemon` in `this.pokes` with the
 id. Finally, use `renderPokemonDetail` to display the Pokemon.
