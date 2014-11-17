@@ -61,6 +61,10 @@ assumed to be asking for a JSON response instead of HTML. When we
 render a template, instead of looking for `template.html.erb`, Rails
 will look for `template.json.jbuilder`. We'll see that soon!
 
+**Also**: the root url `localhost:3000` will be the home of
+our JS application. We have provided this controller and view
+for you.
+
 ## Phase 0A: JBuilder
 
 In `app/views/pokemon/` create three jbuilder files - one each for
@@ -98,8 +102,9 @@ class will be responsible for listening to user clicks and displaying
 Pokemon data. Look at the class, but there is nothing to write for it
 just yet.
 
-**Test your model and collection.** In the Chrome console, make sure
-the following work:
+**Test your model and collection.** Navigate to the [root url](http://localhost:3000).
+Once you are there, in the Chrome console, run the following commands and ensure they work
+as expected.
 
 ```js
 // Should print out the attributes of Pokemon #1
