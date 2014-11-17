@@ -2,26 +2,24 @@ Pokedex.RootView.prototype.createPokemon = function (attrs, callback) { // I
   // instantiate object
   // set attributes
   // save and call callback
-  var poke = new Pokedex.Models.Pokemon(attrs);
+  var pokemon = new Pokedex.Models.Pokemon(attrs);
 
   // Have an alert pop-up which confirms saving when that is complete.
   // Don't add the new pokemon until it is saved properly.
-  poke.save(attrs, {
+  pokemon.save(attrs, {
     success: (function() {
-      this.pokes.add(poke)
-      callback && callback.call(this, poke);
+      this.pokes.add(pokemon);
+      this.addPokemonToList(pokemon);
+      callback && callback.call(this, pokemon);
     }).bind(this)
   });
 
-  return poke;
+  return pokemon;
 };
 
 Pokedex.RootView.prototype.submitPokemonForm = function (event) { // II
   event.preventDefault();
   var pokeAttrs = ($(event.target).serializeJSON())['pokemon'];
 
-  this.createPokemon(pokeAttrs, (function (pokemon) {
-    this.renderPokemonDetail(pokemon);
-    this.addPokemonToList(pokemon);
-  }).bind(this));
+  this.createPokemon(pokeAttrs, this.renderPokemonDetail.bind(this));
 };

@@ -1,16 +1,12 @@
-Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
-  // fetch pokemon on renderPokemonDetail - this calls the show action on
-  // pokemon controller and delivers @pokemon.toys through jbuilder
-  // on success, render toys and append to $pokeDetail
-  this.$pokeDetail.empty();
+Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
+  // TODO: move me to Phase 2 or somesuch...
   this.$toyDetail.empty();
-
-  pokemon.fetch({ // III
+  pokemon.fetch({
     success: (function() {
       var $toys = $('<ul class="toys"></ul>');
       $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
 
-      pokemon.toys().each((function(toy) { // III
+      pokemon.toys().each((function(toy) {
         this.renderToyListItem(toy, $toys);
       }).bind(this));
 
@@ -34,7 +30,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
   this.$pokeDetail.html($detail);
 };
 
-Pokedex.RootView.prototype.selectPokemonFromList = function (event) { // II
+Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
   var $target = $(event.target);
 
   var pokeId = $target.data('id');

@@ -1,19 +1,20 @@
 window.Pokedex = (window.Pokedex || {});
 window.Pokedex.Models = {};
-window.Pokedex.Collections = {}; // I
+window.Pokedex.Collections = {};
 
-// create Pokemon Backbone model
-//
-// #toys function - memoize collection with _toys. return _toys
-//   or new Toys collection
-//
-// #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
-//   and check if there is a 'pokemon' key. If so, call #set on our toys collection
-//   with the value of the pokemon key.
-Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
-  urlRoot: '/pokemon', // I
+Pokedex.Models.Pokemon = Backbone.Model.extend({
+  urlRoot: '/pokemon',
 
-  parse: function (payload) { // III
+  // TODO: Write this in Phase 3.
+  // create Pokemon Backbone model
+  //
+  // #toys function - memoize collection with _toys. return _toys
+  //   or new Toys collection
+  //
+  // #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
+  //   and check if there is a 'pokemon' key. If so, call #set on our toys collection
+  //   with the value of the pokemon key.
+  parse: function (payload) {
     if (payload.toys) {
       this.toys().set(payload.toys),
       delete payload.toys;
@@ -21,7 +22,7 @@ Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
     return payload;
   },
 
-  toys: function () { // III
+  toys: function () {
     if (!this._toys) {
       this._toys = new Pokedex.Collections.PokemonToys([], this);
     }
@@ -29,25 +30,22 @@ Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
   }
 });
 
-Pokedex.Models.Toy = Backbone.Model.extend({ // III
+// TODO: Write this in Phase 3.
+Pokedex.Models.Toy = Backbone.Model.extend({
   urlRoot: '/toys'
 });
 
-// create Pokemon Backbone collection
 Pokedex.Collections.Pokemon = Backbone.Collection.extend({
-  model: Pokedex.Models.Pokemon, // I
-  url: '/pokemon' // I
+  model: Pokedex.Models.Pokemon,
+  url: '/pokemon'
 });
 
-Pokedex.Collections.PokemonToys = Backbone.Collection.extend({ // III
+// TODO: Write this in Phase 3.
+Pokedex.Collections.PokemonToys = Backbone.Collection.extend({
   model: Pokedex.Models.Toy,
   initialize: function(models, pokemon) {
     this.pokemon = pokemon;
   }
-
-  // url: function () {
-  //   return this.pokemon.url() + "/toys";
-  // }
 });
 
 window.Pokedex.Test = {
@@ -78,6 +76,7 @@ window.Pokedex.RootView = function ($el) {
   this.$newPoke = this.$el.find('.new-pokemon');
   this.$toyDetail = this.$el.find('.toy-detail');
 
+  // Click handlers go here.
   this.$pokeList.on(
     'click', 'li', this.selectPokemonFromList.bind(this)
   );
@@ -91,6 +90,6 @@ window.Pokedex.RootView = function ($el) {
 
 $(function() {
   var $rootEl = $('#pokedex');
-	var pokedex = new Pokedex.RootView($rootEl);
-  pokedex.refreshPokemon();
+	window.Pokedex.rootView = new Pokedex.RootView($rootEl);
+  window.Pokedex.rootView.refreshPokemon();
 });
