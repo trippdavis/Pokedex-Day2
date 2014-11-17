@@ -85,35 +85,48 @@ RSpec.configure do |config|
 end
 
 def create_five_pokemon
-  Pokemon.create!([
-    {
-      name: "Charmander",
-      number: 4,
-      poke_type: "fire",
-      attack: 52,
-      defense: 43,
-      evolve_level: 16,
-      evolve_to: 5,
-      moves: ['scratch', 'ember', 'metal claw'],
-      levels: [5, 10],
-      curve: 1.3,
-      probability: 3
-    }, {
-      name: "Snorlax",
-      number: 143,
-      poke_type: 'normal'
-    }, {
-      name: 'Butterfree',
-      number: 12,
-      poke_type: 'bug'
-    }, {
-      name: 'Electabuzz',
-      number: 125,
-      poke_type: 'electric'
-    }, {
-      name: "Articuno",
-      number: 144,
-      poke_type: 'ice'
-    }
-  ])
+  Pokemon.create!([{
+    "name"=>"Bulbasaur",
+    "attack"=>49,
+    "defense"=>49,
+    "poke_type"=>"grass",
+    "moves"=>[
+       "tackle",
+       "vine whip"
+    ],
+    "image_url"=>"/assets/pokemon_snaps/001.png"
+  }, {
+    "name"=>"Ivysaur",
+    "attack"=>62,
+    "defense"=>63,
+    "poke_type"=>"grass",
+    "moves"=>[
+       "tackle",
+       "vine whip",
+       "razor leaf"
+    ],
+    "image_url"=>"/assets/pokemon_snaps/002.png"
+  }, {
+    "name"=>"Venusaur",
+    "attack"=>82,
+    "defense"=>83,
+    "poke_type"=>"grass",
+    "moves"=>[
+       "tackle",
+       "vine whip",
+       "razor leaf"
+    ],
+    "image_url"=>"/assets/pokemon_snaps/003.png"
+  }, {
+    "name"=>"Charmander",
+    "attack"=>52,
+    "defense"=>43,
+    "poke_type"=>"fire",
+    "moves"=>[
+       "scratch",
+       "ember",
+       "metal claw"
+    ],
+    "image_url"=>"/assets/pokemon_snaps/004.png"
+  }])
 end
