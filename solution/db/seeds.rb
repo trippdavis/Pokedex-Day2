@@ -1353,6 +1353,12 @@ ActiveRecord::Base.transaction do
   }
 
   pokemon = pokemon.map do |num, stats|
+    if num.length == 1
+      num = "00#{num}"
+    elsif num.length == 2
+      num = "0#{num}"
+    end
+
     stats["image_url"] = "/assets/pokemon_snaps/#{num}.png"
     stats
   end
