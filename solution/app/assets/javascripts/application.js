@@ -17,4 +17,7 @@
 //= require backbone
 //= require models
 //= require collections
-//= require_tree .
+//= require pokedex-0
+//= require pokedex-1
+//= require pokedex-2
+//= require pokedex-3
