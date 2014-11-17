@@ -15,4 +15,6 @@
 //= require jquery.serializejson.min
 //= require underscore
 //= require backbone
+//= require models
+//= require collections
 //= require_tree .

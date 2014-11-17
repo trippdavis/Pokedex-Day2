@@ -2,13 +2,13 @@
 // * Pass in an el. OK
 // * I removed comparator.
 // * Fix weird rendering bug.
-// * Definitely add the form. 
+// * Definitely add the form.
 // * Each pokemon has many of Xs. When clicking detail view, show all
 //   the Xs. Allow them to click for a detail view of the x.
 //     * I think this needs: (1) association method, (2) association collection, (3) parse method.
 // * **Maybe as a bonus build some wizard for saving nested collection.**
 
-window.Pokedex = function ($el) {
+window.Pokedex.RootView = function ($el) {
   this.$el = $el; // II
   this.pokes = new Pokedex.Collections.Pokemon; // I
 	this.$pokeList = this.$el.find('.pokemon-list'); // II
@@ -20,58 +20,10 @@ window.Pokedex = function ($el) {
   this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); // II
   this.$pokeDetail.on('click', 'li', this.selectToyFromList.bind(this)); // III
 
-  this.pokes.on('change', this.addAllPokemonToList.bind(this)); 
-}
+  this.pokes.on('change', this.addAllPokemonToList.bind(this));
+};
 
-Pokedex.Models = {}; // I
-Pokedex.Collections = {}; // I
-
-// create Pokemon Backbone model
-//
-// #toys function - memoize collection with _toys. return _toys
-//   or new Toys collection
-//
-// #parse function - accepts 'jsonResponse' as argument. Take jsonResponse
-//   and check if there is a 'pokemon' key. If so, call #set on our toys collection
-//   with the value of the pokemon key. 
-Pokedex.Models.Pokemon = Backbone.Model.extend({ // I
-	urlRoot: '/pokemon', // I
-
-  parse: function(payload) { // III
-    if(payload.toys) {
-      this.toys().set(payload.toys),
-      delete payload.toys;
-    } 
-    return payload;
-  },
-
-  toys: function() { // III
-    if(!this._toys) {
-      this._toys = new Pokedex.Collections.Toys([], this);
-    }
-    return this._toys;
-  }
-});
-
-// create Pokemon Backbone collection
-Pokedex.Collections.Pokemon = Backbone.Collection.extend({
-  model: Pokedex.Models.Pokemon, // I
-	url: '/pokemon', // I
-  comparator: 'number', // bonus?
-});
-
-Pokedex.Models.Toy = Backbone.Model.extend({ // III 
-  urlRoot: '/toys'
-});
-
-Pokedex.Collections.Toys = Backbone.Collection.extend({ // III 
-  model: Pokedex.Models.Toy,
-  initialize: function(models, pokemon) {
-    this.pokemon = pokemon;
-  }
-});
-
-Pokedex.prototype.createPokemon = function (attrs, callback) { // I
+Pokedex.RootView.prototype.createPokemon = function (attrs, callback) { // I
 	// instantiate object
 	// set attributes
 	// save and call callback
@@ -90,11 +42,11 @@ Pokedex.prototype.createPokemon = function (attrs, callback) { // I
   return poke;
 };
 
-Pokedex.prototype.createToy = function (attrs, callback) { // III
+Pokedex.RootView.prototype.createToy = function (attrs, callback) { // III
 
 };
 
-Pokedex.prototype.listPokemon = function (callback) { // I
+Pokedex.RootView.prototype.listPokemon = function (callback) { // I
 	// fetch collection
 	// print names asynch
   this.pokes.fetch({
@@ -106,8 +58,8 @@ Pokedex.prototype.listPokemon = function (callback) { // I
   return this.pokes;
 };
 
-Pokedex.prototype.renderPokemonDetail = function (pokemon) { // II
-  // fetch pokemon on renderPokemonDetail - this calls the show action on 
+Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
+  // fetch pokemon on renderPokemonDetail - this calls the show action on
   // pokemon controller and delivers @pokemon.toys through jbuilder
   // on success, render toys and append to $pokeDetail
   this.$pokeDetail.empty();
@@ -118,7 +70,7 @@ Pokedex.prototype.renderPokemonDetail = function (pokemon) { // II
     success: function() {
       var $toys = $('<ul class="toys"></ul>');
       $toys.append('<span style="font-weight: bold;">Toys:</span><br>');
-      
+
       pokemon.toys().each(function(toy) { // III
         that.renderToyListItem(toy, $toys);
       });
@@ -128,7 +80,7 @@ Pokedex.prototype.renderPokemonDetail = function (pokemon) { // II
   });
 
 	var num = pokemon.get('number');
-  
+
   // num can be string or number depending on whether it came
   // from the server or not #=> convert to str if it's a number
   if(typeof num === 'number') {
@@ -151,7 +103,7 @@ Pokedex.prototype.renderPokemonDetail = function (pokemon) { // II
 	this.$pokeDetail.html($detail);
 };
 
-Pokedex.prototype.addPokemonToList = function (pokemon) { // II 
+Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
 	// build LI
 	// apped it to $pokeList
 	var $li = $('<li class="poke-list-item">');
@@ -165,7 +117,7 @@ Pokedex.prototype.addPokemonToList = function (pokemon) { // II
 	this.$pokeList.append($li);
 };
 
-Pokedex.prototype.addAllPokemonToList = function () {
+Pokedex.RootView.prototype.addAllPokemonToList = function () {
   this.$pokeList.empty();
   var that = this;
   this.pokes.each(function(poke) {
@@ -173,7 +125,7 @@ Pokedex.prototype.addAllPokemonToList = function () {
   });
 };
 
-Pokedex.prototype.renderToyDetail = function(toy) { // III
+Pokedex.RootView.prototype.renderToyDetail = function(toy) { // III
   this.$toyDetail.empty();
 
   var $detail = $('<div class="detail">');
@@ -187,19 +139,19 @@ Pokedex.prototype.renderToyDetail = function(toy) { // III
       $span.after(toy.get(attr));
     }
   }
-  
+
   this.$toyDetail.html($detail);
 };
 
-Pokedex.prototype.renderToyForm = function($list) {
+Pokedex.RootView.prototype.renderToyForm = function($list) {
   var $li = $('<li class="toy-list-item">');
   var $form = $('<form>');
   ['name', 'price', 'happiness'].forEach(function(el) {
-    
+
   });
 };
 
-Pokedex.prototype.renderToyListItem = function (toy, $list) { // III
+Pokedex.RootView.prototype.renderToyListItem = function (toy, $list) { // III
   var $li = $('<li class="toy-list-item">');
   $li.data('id', toy.get('id'));
   $li.data('pokemon-id', toy.get('pokemon_id'));
@@ -208,11 +160,11 @@ Pokedex.prototype.renderToyListItem = function (toy, $list) { // III
   shortInfo.forEach(function (attr) {
     $li.append(attr + ': ' + toy.get(attr) + '<br>');
   });
-  
+
   $list.append($li);
 };
 
-Pokedex.prototype.selectPokemonFromList = function (event) { // II
+Pokedex.RootView.prototype.selectPokemonFromList = function (event) { // II
   var $target = $(event.target);
 
 	var pokeId = $target.data('id');
@@ -221,7 +173,7 @@ Pokedex.prototype.selectPokemonFromList = function (event) { // II
 	this.renderPokemonDetail(pokemon);
 };
 
-Pokedex.prototype.selectToyFromList = function (event) { // III
+Pokedex.RootView.prototype.selectToyFromList = function (event) { // III
   var $target = $(event.target);
 
 	var toyId = $target.data('id');
@@ -233,7 +185,7 @@ Pokedex.prototype.selectToyFromList = function (event) { // III
   this.renderToyDetail(toy);
 };
 
-Pokedex.prototype.submitPokemonForm = function (event) { // II
+Pokedex.RootView.prototype.submitPokemonForm = function (event) { // II
   event.preventDefault();
   var pokeAttrs = $(event.target).serializeJSON()['pokemon'];
 
@@ -244,7 +196,7 @@ Pokedex.prototype.submitPokemonForm = function (event) { // II
   });
 };
 
-Pokedex.prototype.submitToyForm = function (event) {
+Pokedex.RootView.prototype.submitToyForm = function (event) {
   event.preventDefault();
   var toyAttrs = $(event.target).serializeJSON()['toy'];
 
@@ -257,7 +209,6 @@ Pokedex.prototype.submitToyForm = function (event) {
 
 $(function() {
   var $rootEl = $('#pokedex');
-
-	var pokedex = new Pokedex($rootEl);
+	var pokedex = new Pokedex.RootView($rootEl);
   pokedex.listPokemon();
 });
