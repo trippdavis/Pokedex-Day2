@@ -10,7 +10,7 @@
 
 window.Pokedex.RootView = function ($el) {
   this.$el = $el; // II
-  this.pokes = new Pokedex.Collections.Pokemon; // I
+  this.pokes = new Pokedex.Collections.Pokemon(); // I
 	this.$pokeList = this.$el.find('.pokemon-list'); // II
 	this.$pokeDetail = this.$el.find('.pokemon-detail'); // II
   this.$newPoke = this.$el.find('.new-pokemon'); // II
@@ -20,7 +20,31 @@ window.Pokedex.RootView = function ($el) {
   this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); // II
   this.$pokeDetail.on('click', 'li', this.selectToyFromList.bind(this)); // III
 
-  this.pokes.on('change', this.addAllPokemonToList.bind(this));
+  // TODO: Not sure we'll want this.
+  // this.pokes.on('change', this.addAllPokemonToList.bind(this));
+};
+
+// TODO: I might remove this.
+Pokedex.RootView.prototype.addAllPokemonToList = function () {
+  this.$pokeList.empty();
+  var that = this;
+  this.pokes.each(function(poke) {
+    that.addPokemonToList(poke);
+  });
+};
+
+Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
+  // build LI
+  // apped it to $pokeList
+  var $li = $('<li class="poke-list-item">');
+  $li.data('id', pokemon.get('id'));
+
+  var shortInfo = ['name', 'number', 'poke_type'];
+  shortInfo.forEach(function (attr) {
+    $li.append(attr + ': ' + pokemon.get(attr) + '<br>');
+  });
+
+  this.$pokeList.append($li);
 };
 
 Pokedex.RootView.prototype.createPokemon = function (attrs, callback) { // I
@@ -46,7 +70,7 @@ Pokedex.RootView.prototype.createToy = function (attrs, callback) { // III
 
 };
 
-Pokedex.RootView.prototype.listPokemon = function (callback) { // I
+Pokedex.RootView.prototype.refreshPokemon = function (callback) { // I
 	// fetch collection
 	// print names asynch
   this.pokes.fetch({
@@ -101,28 +125,6 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) { // II
 	}
 
 	this.$pokeDetail.html($detail);
-};
-
-Pokedex.RootView.prototype.addPokemonToList = function (pokemon) { // II
-	// build LI
-	// apped it to $pokeList
-	var $li = $('<li class="poke-list-item">');
-  $li.data('id', pokemon.get('id'));
-
-	var shortInfo = ['name', 'number', 'poke_type'];
-	shortInfo.forEach(function (attr) {
-		$li.append(attr + ': ' + pokemon.get(attr) + '<br>');
-	});
-
-	this.$pokeList.append($li);
-};
-
-Pokedex.RootView.prototype.addAllPokemonToList = function () {
-  this.$pokeList.empty();
-  var that = this;
-  this.pokes.each(function(poke) {
-    that.addPokemonToList(poke);
-  });
 };
 
 Pokedex.RootView.prototype.renderToyDetail = function(toy) { // III
@@ -210,5 +212,5 @@ Pokedex.RootView.prototype.submitToyForm = function (event) {
 $(function() {
   var $rootEl = $('#pokedex');
 	var pokedex = new Pokedex.RootView($rootEl);
-  pokedex.listPokemon();
+  pokedex.refreshPokemon();
 });
