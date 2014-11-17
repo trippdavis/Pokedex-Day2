@@ -84,7 +84,7 @@ individual Pokemon. Render all the attributes of the `Pokemon`:
 ```
 
 Refer to [this excellent simple documentation][jbuilder-doc]. You'll
-use `json.array!` `json.partial!` and `json.extract` in your JBuilder
+use `json.array!` `json.partial!` and `json.extract!` in your JBuilder
 templates. These are all the major JBuilder options!
 
 **Test your views by visiting `/pokemon/123` and `/pokemon`. Call your
