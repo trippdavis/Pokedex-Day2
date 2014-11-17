@@ -119,7 +119,7 @@ Pokedex.Test.testIndex();
 
 The first thing to do is get your app displaying `Pokemon`. To do
 this, we should first fill out `addPokemonToList(pokemon)` method in
-`pokemon-1A.js`. Create an `li` with jQuery, and list a few high-level
+`pokedex-1A.js`. Create an `li` with jQuery, and list a few high-level
 details of the Pokemon: `name` and `poke_type`. This is just an index
 of Pokemon, so we won't display all data here. Append your `li` to
 `this.$pokeList`.
