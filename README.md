@@ -289,7 +289,16 @@ don't. You can write an if statement right in your JBuilder!
 
 ## Phase 2B: Write a `Toy` Model, `PokemonToys` Collection
 
-**TODO**: WRITE ME.
+Now that we're sending down nested JSON from Rails, lets unbox
+the nested toy data and populate a `PokemonToys` collection. 
+Store this collection in a property on the `Pokemon` called `_toys`
+and write a method `toys` that returns this collection.
+
+The json object we return from `parse` will be used to populate
+the attributes of a `Pokemon` so lets clean up the raw json
+response by deleting the toys property from the incoming json
+response before returning it. If you're still a bit fuzzy on
+how parse works review [the reading][parse-reading].
 
 ## Phase 2C: Displaying Toys in Pokemon Detail View
 
@@ -328,3 +337,5 @@ Likewise, write a click handler `selectToyFromList` as before. You
 will need a `toy-id` data-attribute as before, but you should also set
 a `pokemon-id`, so that you can look up the `toy-id` in the
 appropriate collection of `pokemon.toys()`.
+
+[parse-reading]: https://github.com/appacademy/backbone-curriculum/blob/268498c3e594fa9bfa5f87825295ca8dd1d84d60/w7d3/backbone-model-ii.md
