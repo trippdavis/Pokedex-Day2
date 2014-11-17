@@ -57,7 +57,7 @@ end
 
 **Note the `defaults: {format: :json}`**. This means that HTTP
 requests that Rails handles for the `pokemon` resource should be
-assumed to be asking for a JSON response instead of HTTP. When we
+assumed to be asking for a JSON response instead of HTML. When we
 render a template, instead of looking for `template.html.erb`, Rails
 will look for `template.json.jbuilder`. We'll see that soon!
 
