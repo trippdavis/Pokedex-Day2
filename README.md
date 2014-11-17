@@ -4,8 +4,8 @@
 
 In this project, we'll write an app to manage your `Pokemon` and their
 `Toy`s. We've already setup migrations/models/controllers for you to
-start with. **Set things up with `rake db:create db:migrate
-db:seed`**.
+start with in a skeleton that we will email to you at the beginning of the day. 
+**Set things up with a `bundle install`, then `rake db:create db:migrate db:seed`**.
 
 Here's the schema:
 
