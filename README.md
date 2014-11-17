@@ -117,10 +117,6 @@ the `Pokemon` model we created above. This tells the base class that when we `fe
 the pokemon from the server and store them in individual models, we should use instances of
 the `Pokemon` model as the class to store them in.
 
-class, saving it in the `Pokedex.Models` namespace. To start, you only
-need to set the `urlRoot` property. Also write a `Pokemon` collection
-class. You only need to set the `model` and `url` properties.
-
 We've written and defined a "view" class `Pokedex.RootView`. This
 class will be responsible for listening to user clicks and displaying
 Pokemon data. Look at the class, but there is nothing to write for it
