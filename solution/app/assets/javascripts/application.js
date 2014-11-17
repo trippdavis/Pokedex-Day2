@@ -15,8 +15,6 @@
 //= require jquery.serializejson.min
 //= require underscore
 //= require backbone
-//= require models
-//= require collections
 //= require pokedex-0
 //= require pokedex-1
 //= require pokedex-2
