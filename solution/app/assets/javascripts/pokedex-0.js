@@ -50,17 +50,43 @@ Pokedex.Collections.PokemonToys = Backbone.Collection.extend({ // III
   // }
 });
 
-window.Pokedex.RootView = function ($el) {
-  this.$el = $el; // II
-  this.pokes = new Pokedex.Collections.Pokemon(); // I
-  this.$pokeList = this.$el.find('.pokemon-list'); // II
-  this.$pokeDetail = this.$el.find('.pokemon-detail'); // II
-  this.$newPoke = this.$el.find('.new-pokemon'); // II
-  this.$toyDetail = this.$el.find('.toy-detail'); // III
+window.Pokedex.Test = {
+  testShow: function (id) {
+    var pokemon = new Pokedex.Models.Pokemon({ id: id });
+    pokemon.fetch({
+      success: function () {
+        console.log(pokemon.toJSON());
+      }
+    });
+  },
 
-  this.$pokeList.on('click', 'li', this.selectPokemonFromList.bind(this)); // II
-  this.$newPoke.on('submit', this.submitPokemonForm.bind(this)); // II
-  this.$pokeDetail.on('click', 'li', this.selectToyFromList.bind(this)); // III
+  testIndex: function () {
+    var pokemon = new Pokedex.Collections.Pokemon();
+    pokemon.fetch({
+      success: function () {
+        console.log(pokemon.toJSON());
+      }
+    });
+  }
+};
+
+window.Pokedex.RootView = function ($el) {
+  this.$el = $el;
+  this.pokes = new Pokedex.Collections.Pokemon();
+  this.$pokeList = this.$el.find('.pokemon-list');
+  this.$pokeDetail = this.$el.find('.pokemon-detail');
+  this.$newPoke = this.$el.find('.new-pokemon');
+  this.$toyDetail = this.$el.find('.toy-detail');
+
+  this.$pokeList.on(
+    'click', 'li', this.selectPokemonFromList.bind(this)
+  );
+  this.$newPoke.on(
+    'submit', this.submitPokemonForm.bind(this)
+  );
+  this.$pokeDetail.on(
+    'click', 'li', this.selectToyFromList.bind(this)
+  );
 };
 
 $(function() {
