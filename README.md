@@ -78,11 +78,13 @@ Pokemon. Render all the attributes of the `Pokemon`:
   "poke_type":"bug" }
 ```
 
-You'll use `json.array!` `json.partial!` and `json.extract` in your
+Refer to [this excellent simple documentation][jbuilder-doc]. You'll use `json.array!` `json.partial!` and `json.extract` in your
 JBuilder templates. These are all the major JBuilder options!
 
 **Test your views by visiting `/pokemon/123` and `/pokemon`. Call your
 TA to review.**
+
+[jbuilder-doc]: https://github.com/rails/jbuilder
 
 ## Phase 0B: `Models.Pokemon` and `Collections.Pokemon`
 
