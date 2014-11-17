@@ -299,7 +299,7 @@ the Pokemon.
 There is a caveat: we want to display the toys when we go to
 `/pokemon/123`, **but not when we go to `/pokemon`**. When you are
 writing a large application, it is not possible to send *all* the data
-down in a single JSON response. Therefore, `/pokemons` should just
+down in a single JSON response. Therefore, `/pokemon` should just
 list the pokemons, while fetching a single Pokemon can additionally
 request further, more specific data.
 
