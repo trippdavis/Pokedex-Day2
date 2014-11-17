@@ -331,7 +331,7 @@ how this association collection is populated?
 
 The Backbone `parse` method gives us the opportunity to massage an
 incoming JSON object into the attributes our Backbone model will have.
-It also happens to be a great place to intercept any nested data and
+`parse` also happens to be a great place to intercept any nested data and
 use that data to populate associated collections.
 
 Write a `parse(payload)` method on `Pokemon`. `payload` here is the
