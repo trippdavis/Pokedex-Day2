@@ -67,10 +67,10 @@ for you.
 
 ## Phase 0A: JBuilder
 
-In `app/views/pokemon/` create three jbuilder files - one each for
-`show` and `index`, and a partial called `_pokemon`. Your `show` and
-`index` files should both call the partial to render individual
-Pokemon. Render all the attributes of the `Pokemon`:
+In `app/views/pokemon/` fill in the three empty jbuilder files - one 
+each for `show` and `index`, and a partial called `_pokemon`. Your 
+`show` and `index` files should both call the partial to render 
+individual Pokemon. Render all the attributes of the `Pokemon`:
 
 ```json
 { "id":1,
