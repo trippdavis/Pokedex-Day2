@@ -251,6 +251,82 @@ Adding callback arguments to asynchronous methods is extremely common,
 because it gives the caller flexibility to optionally do more work
 **after** the asynchronous work of the method is completed.
 
+**Call your TA over to check your work and to revel in your success!**
+
+## Phase 2A: Rendering Toys
+
+Pokemon love to play, so we've seeded the database with some toys. Our
+first step is to update our JBuilder templates to render not just the
+Pokemon, but also their Toys.
+
+To do this, first write a `toys/_toy.json.jbuilder` partial template,
+even though we won't write a `ToysController`. Write your template to
+display the attributes of a toy: `id`, `happiness`, `image_url`,
+`name`, `pokemon_id`, and `price`.
+
+Modify your `pokemon/_pokemon` partial using `json.toys` to display a
+list of toys. In the block you pass to `json.toys`, use `json.array!`
+and render the partial (using `json.partial!`) for each of the toys of
+the Pokemon.
+
+There is a caveat: we want to display the toys when we go to
+`/pokemons/123`, **but not when we go to `/pokemons`**. When you are
+writing a large application, it is not possible to send *all* the data
+down in a single JSON response. Therefore, `/pokemons` should just
+list the pokemons, while fetching a single Pokemon can additionally
+request further, more specific data.
+
+For that reason, change your `pokemon/_pokemon` template so that
+`pokemon/show` can **optionally** specify the toys to be rendered. You
+can have it do this by passing a partial variable `display_toys:
+true`. If `display_toys`, render the toys in `pokemon/_pokemon`, else
+don't. You can write an if statement right in your JBuilder!
+
+**Check that this is working by loading `/pokemon` and
+`/pokemon/123`.** Call your TA over to check.
+
+## Phase 2B: Write a `Toy` Model, `PokemonToys` Collection
+
+**TODO**: WRITE ME.
+
+## Phase 2C: Displaying Toys in Pokemon Detail View
+
+**renderPokemonDetail**
+
+First, in your `renderPokemonDetail` method (in `pokedex-1B.js`),
+build and append a `ul.toys` to your `div.detail` that you are
+constructing. We'll display the toys inside this `ul` inside the
+detail view.
+
+Next, in the `renderPokemonDetail`, instigate a fetch of the
+`Pokemon`, so that we can pull down the Pokemon's toys. For now, in
+the success callback, just `console.log` each of the fetched
+`pokemon.toys()`. Verify that the toys are fetched properly.
+
+**addToyToList**
+
+Instead of `console.log`ing the toys, we want to add them to the toys
+list ul we've built. To do this, we'll write an `addToyToList(toy)`
+method in `pokedex-2C.js`.
+
+In this method, construct an `li` for the Toy. Display basic info
+about the toy: it's `name`, `happiness`, and `price`. Add the `li` to
+the `ul.toys` inside of the `this.pokeDetail` element.
+
+Last, modify `renderPokemonDetail` a last time to call `addToyToList`
+for each toy, instead of logging.
+
+**renderToyDetail and selectToyFromList**
+
+We want to be able to show more detailed attributes of the Toy; in
+particular its image. Write the `renderToyDetail(toy)` method, which
+should make a `div.detail` and place it in `this.$toyDetail`.
+
+Likewise, write a click handler `selectToyFromList` as before. You
+will need a `toy-id` data-attribute as before, but you should also set
+a `pokemon-id`, so that you can look up the `toy-id` in the
+appropriate collection of `pokemon.toys()`.
+
 ## TODO
 
 ### Jasmine Specs

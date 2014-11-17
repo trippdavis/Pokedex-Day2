@@ -1,6 +1,7 @@
 Pokedex.RootView.prototype.addToyToList = function (toy) {
   var $li = $('<li class="toy-list-item">');
   $li.data('id', toy.get('id'));
+  $li.data('pokemon-id', toy.get('pokemon_id'));
 
   var shortInfo = ['name', 'happiness', 'price'];
   shortInfo.forEach(function (attr) {

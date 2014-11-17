@@ -84,7 +84,7 @@ window.Pokedex.RootView = function ($el) {
     'submit', this.submitPokemonForm.bind(this)
   );
   this.$pokeDetail.on(
-    'click', 'li', this.selectToyFromList.bind(this)
+    'click', '.toys li', this.selectToyFromList.bind(this)
   );
 };
 
