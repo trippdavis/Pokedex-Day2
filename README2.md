@@ -58,7 +58,22 @@ pokemon.fetch({
 ```
 
 Last, modify your `renderPokemonDetail` to use
-`JST["pokemonDetail"]`. You'll still have jQuery code for building the
+`JST["pokemonDetail"]`. As mentioned above, `JST["pokemonDetail"]` stores
+a function that, when called and passed `{pokemon: pokemon}` as the argument,
+will return the rendered template; actual HTML code. Instead of creating
+the div using jQuery and adding elements one after another like yesterday,
+we are going to render our template and let it fill out the HTML for us!
+
+For example:
+```html
+    var content = JST['pokemonDetail']({pokemon: pokemon});
+```
+
+In the snippet above, content will be the entire HTML content of the
+rendered template. We should be able to put content directly into the
+`html` of some element without problem.
+
+You'll still have jQuery code for building the
 list of toys, but this should reduce the amount of jQuery code. Verify
 that this works correctly as before.
 
