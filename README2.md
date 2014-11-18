@@ -165,7 +165,7 @@ Next, we have to render the toys. Let's change our
 `PokemonIndex#selectPokemonFromList` code so that instead of calling
 `PokemonDetail#render` directly, it instead calls `#refreshPokemon`.
 
-In the `#refreshPokemon`, fetch the pokemon to get its nested data,
+In the `#refreshPokemon` method, fetch the pokemon to get its nested data,
 calling `#render` in the success callback. Also, extend your `#render`
 method to display the toys, by iterating through `model.toys()` and
 using your `toyListItem` template.
@@ -201,7 +201,7 @@ code from `pokemon-5.js`. Comment out the old initialization code in
 
 Next, we'll change `PokemonIndex#selectPokemonFromList`. Instead of
 creating a view, use `Backbone.history.navigate` to move to a
-`/pokemon/:id` URL. Next, write a second route in the router to show
+`/pokemon/:id` URL. Next, write a second route in the router to
 construct/insert the `PokemonDetail` view. Your route function should
 accept an `id` parameter. To start, just use `console.log` to verify
 the route is invoked, and print out the `id` to check that the id is
@@ -227,7 +227,7 @@ is a `this._pokemonIndex` saved. If not, call `#pokemonIndex`.
 This should get your Pokemon index rendering again, but you won't be
 able to see your `PokemonDetail` still. That's because we have to wait
 until after the `this._pokemonIndex` is fully fetched. To ensure this,
-add a callback argument to `Router#pokemonIndex`, use this as a
+add a callback argument to `Router#pokemonIndex`; use this as a
 success callback to `PokemonIndex#refreshPokemon`. You'll want to
 modify your `PokemonIndex#refreshPokemon` to take a success callback
 (it should render **and** call the callback).
@@ -237,7 +237,7 @@ to `Router#pokemonIndex`. Just have it print an alert after the index
 is rendered.
 
 When this is working, change your `Router#pokemonDetail` so that the
-callback to the call to `Router#pokemonIndex` to **rerun** the
+callback passed to `Router#pokemonIndex` will **rerun** the
 `pokemonDetail` method.
 
 **ToyDetail**
