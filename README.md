@@ -492,3 +492,13 @@ iterate through the toys, calling `addToyToList` on each.
 * Change `renderPokemonDetail` to call `renderToysList` in the
   success callback to `pokemon.fetch`.
 * Change `reassignToy` to directly call `renderPokemonDetail`.
+
+## Bonus: Phase IV
+
+**update and destroy**
+
+Convert your Pokemon Detail and Toy Detail into forms. Instead of just listing the model's attributes , put the attributes in the values of the form inputs, and let the user 'update' their model on the server. Add the corresponding routes and controller actions. It may come in handy to use...
+
+**templates**
+
+Use `<script>` tags in your root.html.erb to create EJS templates. Use these to replace the long jQuery object chains in your RootView methods. You can call these with `_.template`. [Check out the readings](https://github.com/appacademy/js-curriculum/blob/master/w6d5/underscore-templates.md) for more information on rendering EJS templates in ERB.
