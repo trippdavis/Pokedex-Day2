@@ -14,8 +14,13 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
     this.$el.append(liContent);
   },
 
-  refreshPokemon: function () {
-    this.collection.fetch({ success: this.render.bind(this) });
+  refreshPokemon: function (options) {
+    this.collection.fetch({
+      success: (function () {
+        this.render();
+        options.success && options.success();
+      }).bind(this)
+    });
   },
 
   render: function () {
@@ -25,12 +30,18 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
 
   selectPokemonFromList: function (event) {
     var pokemonId = $(event.currentTarget).data("id");
-    var pokemon = this.collection.get(pokemonId);
 
+    Backbone.history.navigate(
+      "/pokemon/" + pokemonId,
+      { trigger: true }
+    );
+
+    /*
     var pokemonDetail =
         new Pokedex.Views.PokemonDetail({ model: pokemon });
     $("#pokedex .pokemon-detail").html(pokemonDetail.$el);
     pokemonDetail.refreshPokemon();
+    */
   }
 });
 
@@ -70,8 +81,10 @@ Pokedex.Views.ToyDetail = Backbone.View.extend({
   }
 });
 
+/*
 $(function () {
   var pokemonIndex = new Pokedex.Views.PokemonIndex();
   pokemonIndex.refreshPokemon();
   $("#pokedex .pokemon-list").html(pokemonIndex.$el);
 });
+*/

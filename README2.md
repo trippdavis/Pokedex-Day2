@@ -152,3 +152,60 @@ You'll have to write the `ToyDetail#render` method. When rendering the
 `toyDetail` template, just pass an empty array for the `pokes`
 parameter for now. We'll fix the dropdown to reassign the pokemon
 later.
+
+## Phase 6: Routing
+
+**PokemonIndex, PokemonDetail**
+
+In the previous section, when you click a pokemon, our `PokemonIndex`
+view constructs a `PokemonDetail` view and inserts it into the
+DOM. This is not great style; instead, the view should navigate to a
+new URL, and a `Router` should construct the new view and insert it.
+
+To begin, write a route in `pokedex-6.js` that maps the root URL to
+the `pokemonIndex` method. Into this method, copy the initialization
+code from `pokemon-5.js`. Comment out the old initialization code in
+`pokemon-5.js`; we'll rely on the router now.
+
+Next, we'll change `PokemonIndex#selectPokemonFromList`. Instead of
+creating a view, use `Backbone.history.navigate` to move to a
+`/pokemon/:id` URL. Next, write a second route in the router to show
+construct/insert the `PokemonDetail` view. Your route function should
+accept an `id` parameter. To start, just use `console.log` to verify
+the route is invoked, and print out the `id` to check that the id is
+set correctly. Remember to pass `{ trigger: true }` as an option to
+`Backbone.history.navigate`.
+
+Okay! Now we need to construct the `PokemonDetail` view. This mostly
+involves moving the old code from `PokemonIndex#selectPokemonFromList`
+to `Pokedex.Router#pokemonDetail`. The first step is finding the
+proper `Pokemon` instance in `#pokemonDetail`. To do this, make sure
+your `Router#pokemonIndex` method saves the `PokemonIndex` view in
+`this._pokemonIndex`. Then you can access
+`this.pokemonIndex.collection` in `#pokemonDetail`.
+
+**Fixing Direct Navigation to PokemonDetail**
+
+You'll notice that if you go directly to
+`http://localhost:3000/#pokemon/1`, nothing will work. That's because
+this will invoke `Router#pokemonDetail` when there is no
+`this.pokemonIndex`. To solve this, in `#pokemonDetail`, check if there
+is a `this._pokemonIndex` saved. If not, call `#pokemonIndex`.
+
+This should get your Pokemon index rendering again, but you won't be
+able to see your `PokemonDetail` still. That's because we have to wait
+until after the `this._pokemonIndex` is fully fetched. To ensure this,
+add a callback argument to `Router#pokemonIndex`, use this as a
+success callback to `PokemonIndex#refreshPokemon`. You'll want to
+modify your `PokemonIndex#refreshPokemon` to take a success callback
+(it should render **and** call the callback).
+
+Test this callback works properly by passing a simple success callback
+to `Router#pokemonIndex`. Just have it print an alert after the index
+is rendered.
+
+When this is working, change your `Router#pokemonDetail` so that the
+callback to the call to `Router#pokemonIndex` to **rerun** the
+`pokemonDetail` method.
+
+**ToyDetail**
