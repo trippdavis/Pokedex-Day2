@@ -147,7 +147,8 @@ Pokedex.Test.testIndex();
 
 The first thing to do is get your `RootView` displaying `Pokemon`. To do
 this, we should first fill out `addPokemonToList(pokemon)` method in
-`pokedex-1A.js`. Create an `li` with jQuery, and list a few high-level
+`pokedex-1A.js` which takes an instance of `Pokedex.Models.Pokemon` as an 
+argument. Create an `li` with jQuery, and list a few high-level
 details of the Pokemon: `name` and `poke_type`. This is just an index
 of Pokemon, so we won't display all data here. Append your `li` to
 `this.$pokeList`.
@@ -186,9 +187,10 @@ What we're going to do next is allow ourselves to see more detail
 about a `Pokemon` by selecting it from the index.
 
 We're going to show the details of the `Pokemon` in the
-`this.$pokeDetail`. Create a `div.detail`. Add an image tag with the
-Pokemon's photo; iterate through all the Pokemon properties, adding
-each to the `div.detail`. Add the `div.detail` to `this.$pokeDetail`.
+`this.$pokeDetail`. In `renderPokemonDetail` create a `div.detail` 
+using jQuery. Add an image tag with the Pokemon's photo; iterate 
+through all the Pokemon properties, adding each to the `div.detail`. 
+Add the `div.detail` to `this.$pokeDetail`.
 
 You can verify this is working:
 
