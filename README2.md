@@ -221,7 +221,7 @@ your `Router#pokemonIndex` method saves the `PokemonIndex` view in
 You'll notice that if you go directly to
 `http://localhost:3000/#pokemon/1`, nothing will work. That's because
 this will invoke `Router#pokemonDetail` when there is no
-`this.pokemonIndex`. To solve this, in `#pokemonDetail`, check if there
+`this._pokemonIndex`. To solve this, in `#pokemonDetail`, check if there
 is a `this._pokemonIndex` saved. If not, call `#pokemonIndex`.
 
 This should get your Pokemon index rendering again, but you won't be
