@@ -26,7 +26,7 @@ For example:
 ```html
 <script type="text/template" id="pokemon-detail-template">
   <div class="detail">
-    <%%= "<img src='" + pokemon.escape('image_url') + "'></img>" %>
+    <img src="<%%= pokemon.escape('image_url') %>"></img>
   </div>
 </script>
 ```
