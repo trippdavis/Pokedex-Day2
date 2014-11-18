@@ -56,6 +56,11 @@ pokemon.fetch({
   }
 });
 ```
+For today's project, we have already grabbed all the template script tags from 
+`app/views/shared/_templates` using jQuery and turned them into template functions
+in `app/assets/javascripts/pokedex-4.js` storing them in a `JST` namespace. For
+example, the `#pokemon-detail-template` has been processed into the template 
+function `JST["pokemonDetail"]`. Check it out in `pokedex-4`.
 
 Last, modify your `renderPokemonDetail` to use
 `JST["pokemonDetail"]`. As mentioned above, `JST["pokemonDetail"]` stores
