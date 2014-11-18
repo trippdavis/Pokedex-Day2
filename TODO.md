@@ -2,6 +2,13 @@
 * Update form for Pokemon.
 * Destroy a pokemon.
 
+* Templates
+* Views
+    * DOM event listening
+    * Listen to models.
+* Router
+* CompositeViews??
+
 ## TODO
 
 ### Jasmine Specs
