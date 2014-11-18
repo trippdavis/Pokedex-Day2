@@ -112,8 +112,10 @@ window.Pokedex.RootView = function ($el) {
   );
 };
 
+/*
 $(function() {
-  var $rootEl = $('#pokedex');
-  window.Pokedex.rootView = new Pokedex.RootView($rootEl);
-  window.Pokedex.rootView.refreshPokemon();
+    var $rootEl = $('#pokedex');
+    window.Pokedex.rootView = new Pokedex.RootView($rootEl);
+    window.Pokedex.rootView.refreshPokemon();
 });
+*/

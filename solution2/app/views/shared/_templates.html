@@ -37,15 +37,16 @@
   <div class="detail">
     <img src="<%%= toy.get("image_url") %>"><br>
     <%% for (var attr in toy.attributes) { %>
+      <%% if (attr === "pokemon_id" || attr === "image_url") continue; %>
       <span style="font-weight: bold;"><%%= attr %>:</span>
-      <%%= toy.get("attr") %>
+      <%%= toy.get(attr) %>
       <br>
     <%% } %>
   </div>
 
   <select data-pokemon-id="<%%= toy.get("pokemon_id") %>"
           data-toy-id="<%%= toy.get("id") %>">
-    <%% pokes.each(function (pokemon) { %>
+    <%% pokes.forEach(function (pokemon) { %>
       <option value="<%%= pokemon.id %>"
               <%% if (pokemon.id == toy.get("pokemon_id")) { %>
                 selected

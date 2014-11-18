@@ -3,7 +3,7 @@ Pokedex.RootView.prototype.addToyToList = function (toy) {
   this.$pokeDetail.find(".toys").append(liContent);
 };
 
-Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
+Pokedex.RootView.prototype.renderToyDetail = function (toy) {
   var detailContent = JST["toyDetail"]({ toy: toy, pokes: this.pokes });
   this.$toyDetail.html(detailContent);
 };
