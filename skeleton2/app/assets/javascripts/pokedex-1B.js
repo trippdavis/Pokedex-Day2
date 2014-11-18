@@ -32,7 +32,7 @@ Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
   this.$toyDetail.empty();
 
   // Phase IB
-  var $target = $(event.target);
+  var $target = $(event.currentTarget);
 
   var pokeId = $target.data('id');
   var pokemon = this.pokes.get(pokeId);
