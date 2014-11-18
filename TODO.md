@@ -1,7 +1,10 @@
 * Phase 3:
     * Destroy a pokemon.
     * Write an update method for the Pokemon.
-    * Refresh button?
+    * Reassign Toys; involves giving toys a `Pokemon` reference.
+    * initialize in the collection of the PokemonToys
+    * reassign toy... belongsTo?
+    * updating toys?
 * Maybe day 3 is rewriting our pokemon stuff with Views and finally
   Router.
 

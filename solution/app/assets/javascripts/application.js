@@ -20,3 +20,4 @@
 //= require pokedex-1B
 //= require pokedex-1C
 //= require pokedex-2
+//= require pokedex-3

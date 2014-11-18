@@ -413,3 +413,82 @@ appropriate collection of `pokemon.toys()`.
 
 [collection-set]: http://backbonejs.org/#Collection-set
 [parse-reading]: https://github.com/appacademy/backbone-curriculum/blob/268498c3e594fa9bfa5f87825295ca8dd1d84d60/w7d3/backbone-model-ii.md
+
+## Bonus: Phase III
+
+**ToysController**
+
+We'd like to add the option to re-assign a `Toy` from one Pokemon to
+another. The first step is to write a `ToysController` with a `show`
+and `update` action, and add a resource for toys in the routes
+file. You'll also want to write a `toys/show.json.jbuilder` for your
+`ToysController#update` to render; this can use your
+`_toy.json.jbuilder` partial.
+
+Verify this is working like so:
+
+```javascript
+var toy = new Pokedex.Models.Toy({ id: 1 });
+// we'll be setting this toy to be owned by Pokemon #1
+toy.set("pokemon_id", 1);
+toy.save({}, {
+  success: function () {
+    // after updating the toy, print the toy out.
+    console.log(toy.toJSON());
+  }
+});
+```
+
+Notice that the first argument to `save` is blank, while the second
+argument is an options hash that specifies the success callback. The
+`save` method's first argument can contain some attributes to update
+on the server, but I rarely use this, instead I just `set` the
+attributes I want to, and call `save` with a blank object.
+
+**reassignToy**
+
+Modify your `renderToyDetail` to display a `select` box. Give it both
+`data-pokemon-id` and `data-toy-id` data-attributes.
+
+Iterate through `this.pokes`, creating an `option` for each of the
+Pokemon. Set the `value` attribute of the `option` to
+`pokemon.id`. Set the `text` of the `option` to the Pokemon's
+name. Append each `option` to the `select`. Append the `select` to the
+Toy detail element.
+
+Also, set the `selected` property of the option for the currently
+assigned pokemon, so that the right option is selected initially.
+
+Reload your code to make sure you see the options box, with the list
+of pokemon.
+
+Next, add a handler for the change even on your select box. There is a
+`RootView#reassignToy` method in `pokedex-3.js`. To start, print the
+id of the old pokemon saved in `data-pokemon-id`, the id of the toy
+saved in `data-toy-id` and the id of the newly selected Pokemon (the
+`val` of the `select` element). Verify this is working.
+
+Next, in the `reassignToy` handler, we want to do a few things:
+
+* Lookup the `pokemon-id` in `this.pokes` to get the old Pokemon.
+* Lookup the `toy-id` to get the Toy in `pokemon.toys()`.
+* Set the Toy's `pokemon_id` to the new Pokemon.
+* Save the `Toy`. In the success callback:
+    * Remove the toy from `pokemon.toys()`, since it is no longer
+      assigned to this Pokemon.
+    * Call `renderPokemonDetail` to re-render the Pokemon's smaller
+      list of toys.
+    * Empty the `$toyDetail` since this toy is no longer selected.
+
+**renderToysList**
+
+One last thought. It's kind of nasty to have to call
+`renderPokemonDetail`, which fetches the `pokemon`. Instead, let's
+write a `renderToysList(toys)` method. In `renderToysList`, we can
+iterate through the toys, calling `addToyToList` on each.
+
+* Make sure to clear out `this.$pokeDetail.find(".toys")` first in
+  `renderToysList`.
+* Change `renderPokemonDetail` to call `renderToysList` in the
+  success callback to `pokemon.fetch`.
+* Change `reassignToy` to directly call `renderPokemonDetail`.
