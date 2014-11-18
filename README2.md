@@ -209,7 +209,7 @@ to `Pokedex.Router#pokemonDetail`. The first step is finding the
 proper `Pokemon` instance in `#pokemonDetail`. To do this, make sure
 your `Router#pokemonIndex` method saves the `PokemonIndex` view in
 `this._pokemonIndex`. Then you can access
-`this.pokemonIndex.collection` in `#pokemonDetail`.
+`this._pokemonIndex.collection` in `#pokemonDetail`.
 
 **Fixing Direct Navigation to PokemonDetail**
 
