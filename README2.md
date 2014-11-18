@@ -209,3 +209,16 @@ callback to the call to `Router#pokemonIndex` to **rerun** the
 `pokemonDetail` method.
 
 **ToyDetail**
+
+Finally, let's write a `pokemon/:pokemonId/toys/:toyId` route. As
+before, change `PokemonDetail#selectToyFromList` to use
+`Backbone.history.navigate` (don't forget `{ trigger: true }`!).
+
+Your `Router#toyDetail(pokemonId, toyId)` method should first get the
+Toy from `this._pokemonDetail.model.toys()`. Therefore, have your
+`Router#pokemonDetail` save a `_pokemonDetail` view.
+
+Again, you'll have to deal with direct navigation to
+`http://localhost:3000#pokemon/123/toy/456`. Use the same callback
+trick with `Router#pokemonDetail` that you used on
+`Router#pokemonIndex`.
