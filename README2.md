@@ -153,7 +153,7 @@ works.
 
 To actually display the details of the selected pokemon, let's
 instantiate a `PokemonDetail` view in the `#selectPokemonFromList`
-method. Pass in the selected pokemon at the selected pokemon as the
+method. Pass in the selected pokemon as the
 `model` parameter. Insert the `pokemonDetail.$el` into `$("#pokedex
 .pokemon-detail")`. Last, call `render` on the `pokemonDetail` view.
 
