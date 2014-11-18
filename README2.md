@@ -163,7 +163,7 @@ Next, we have to render the toys. Let's change our
 In the `#refreshPokemon`, fetch the pokemon to get its nested data,
 calling `#render` in the success callback. Also, extend your `#render`
 method to display the toys, by iterating through `model.toys()` and
-using your `toysListItem` template.
+using your `toyListItem` template.
 
 You should now have be able to see a list of toys, but not click on
 them yet.
