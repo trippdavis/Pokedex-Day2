@@ -19,7 +19,7 @@ evaluated by the server**, but instead be _rendered_ by the client to
 generate HTML.
 
 Let's start by writing the `pokemon-detail-template` in
-`app/views/shared/_templates"`. In this file are a series of script
+`app/views/shared/_templates`. In this file are a series of script
 tags; your template code will go here. 
 
 For example: 
@@ -69,7 +69,9 @@ For example:
     var content = JST['pokemonDetail']({pokemon: pokemon});
 ```
 
-In the snippet above, content will be the entire HTML content of the
+In the snippet above, we are _rendering_ the template and passing
+`pokemon` as a _local variable_ to the template. If this succeeds,
+`content` will be the entire HTML content of the
 rendered template. We should be able to put content directly into the
 `html` of some element without problem.
 
