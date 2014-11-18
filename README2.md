@@ -15,18 +15,32 @@ The traditional solution is to use *client-side templates*. What Rails
 calls a *view* (`index.html.erb`, `index.json.jbuilder`) is more
 properly called a *template*. We will start out this project building
 templates. The big difference is that these templates **will not be
-evaluated by the server**, but instead be used by the client to
+evaluated by the server**, but instead be _rendered_ by the client to
 generate HTML.
 
 Let's start by writing the `pokemon-detail-template` in
 `app/views/shared/_templates"`. In this file are a series of script
-tags; your template code will go here.
+tags; your template code will go here. 
 
-Write an EJS template to display a single Pokemon, mimicing the parts
-of `renderPokemonDetail` function that display the Pokemon (but not
-the list of toys yet!). Render the partial in the `root.html.erb` so
-that these script tags are included in the HTML served by the
-server. Remember to use `<%%= ... %>` in your template, so that Rails
+For example: 
+```html
+<script type="text/template" id="pokemon-detail-template">
+  <div class="detail">
+    <%%= "<img src='" + pokemon.escape('image_url') + "'></img>" %>
+  </div>
+</script>
+```
+
+Inside this script tag is a template that, when evaluated with a
+`pokemon` local variable, will produce a `div` containing the Pokemon's
+image. To create a template object that can be rendered from the content
+of this script tag, we need to pass the content to the `_.template` function.
+The return value is a function that, when called and passed `{pokemon: pokemon}`
+as an argument shuld return the actual rendered html.
+
+Write the template code to to display a single Pokemon, recreating 
+`renderPokemonDetail` to display the Pokemon (but not
+the list of toys yet!). Remember to use `<%%= ... %>` in your template, so that Rails
 doesn't try to interpret it.
 
 When you have written this, check that the following code works:
@@ -42,10 +56,6 @@ pokemon.fetch({
   }
 });
 ```
-
-When this seems to be producing valid HTML, edit `pokedex-4.js` to
-Load the template and compile it, saving the template function as
-`JST["pokemonDetail"]`.
 
 Last, modify your `renderPokemonDetail` to use
 `JST["pokemonDetail"]`. You'll still have jQuery code for building the
