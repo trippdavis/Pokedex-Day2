@@ -92,7 +92,7 @@ template:
 
 * `pokemon-list-item-template`, `addPokemonToList`
 * Extend your `pokemon-detail-template` to hold an empty
-  `ul.toys`. Then write `toy-list-item-teplate` and update
+  `ul.toys`. Then write `toy-list-item-template` and update
   `addToyToList`.
 * `toy-detail-template`, `renderToyDetail`
     * Write the `select` tag! You'll want to pass `this.pokes` into
