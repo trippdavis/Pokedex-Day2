@@ -257,4 +257,37 @@ trick with `Router#pokemonDetail` that you used on
 
 ## Bonus; Phase 7: Write `PokemonForm` View, Toy Reassignment Dropdown
 
-**TODO**.
+**PokemonForm**
+
+The last view to migrate is the `PokemonForm`. Previously, we were
+handling the `submit` of the form with a handler in `pokedex-0.js`.
+Now we're going to write a Backbone view to deal with our form
+submission.
+
+First, refactor the HTML of the `form` out of the Rails view
+(`app/views/static_pages/root.html.erb`) and into the
+`pokemon-form-template`. For now you can cut and paste.
+
+Second, write the `pokemonForm` function in the router. It should
+initialize a `PokemonForm` view. Typically form views take both a new
+model as well as a collection. We'll see why we need to pass the
+collection in a bit. Construct the form view with a new `Pokemon` as the
+model, and the `this._pokemonIndex.collection` as the collection. Render
+the view and populate `$('#pokedex .pokemon-form')` with it's `$el`.
+
+Call the `pokemonForm` function in the `pokemonIndex`. This will ensure
+the form view is rendered for every route.
+
+Next, lets write the `PokemonForm` view. In `render` populate the `$el`
+using `JST["pokemonForm"]`.
+
+At this point you should be able to refresh your browser and see the
+form. Woot!
+
+**Submit**
+
+Having a Backbone view backing a form is helpful when handling
+persistence of form data. Add a `submit` handler to the `events` hash
+that calls `savePokemon`.
+
+**TODO**
