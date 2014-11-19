@@ -255,7 +255,7 @@ Again, you'll have to deal with direct navigation to
 trick with `Router#pokemonDetail` that you used on
 `Router#pokemonIndex`.
 
-## Bonus; Phase 7: Write `PokemonForm` View, Toy Reassignment Dropdown
+## Phase 7: Write `PokemonForm` View
 
 **PokemonForm**
 
@@ -298,5 +298,7 @@ You'll want to use the `pokemon` property of the serialized data.
 On successful save of the pokemon, add the model to `this.collection`
 and navigate to the pokemon detail page using
 `Backbone.history.navigate`.
+
+## Bonus; Phase 8: Toy Reassignment Dropdown
 
 **TODO**
