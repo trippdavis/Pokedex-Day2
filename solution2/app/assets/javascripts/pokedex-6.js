@@ -25,6 +25,7 @@ Pokedex.Router = Backbone.Router.extend({
     this._pokemonIndex.refreshPokemon({
       success: callback
     });
+    this.pokemonForm();
   },
 
   toyDetail: function (pokemonId, toyId) {
@@ -41,6 +42,16 @@ Pokedex.Router = Backbone.Router.extend({
     var toyDetail = new Pokedex.Views.ToyDetail({ model: toy });
     $("#pokedex .toy-detail").html(toyDetail.$el);
     toyDetail.render();
+  },
+
+  pokemonForm: function () {
+    var pokemon = new Pokedex.Models.Pokemon();
+    this._formView = new Pokedex.Views.PokemonForm({
+      model: pokemon,
+      collection: this._pokemonIndex.collection
+    });
+    $('#pokedex .pokemon-form').html(this._formView.$el);
+    this._formView.render();
   }
 });
 

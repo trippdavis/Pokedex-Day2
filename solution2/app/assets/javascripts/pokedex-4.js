@@ -12,4 +12,7 @@ $(function () {
 
   JST["toyDetail"] =
     _.template($("#toy-detail-template").html());
+
+  JST["pokemonForm"] =
+    _.template($("#pokemon-form-template").html());
 });

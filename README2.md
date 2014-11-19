@@ -260,7 +260,7 @@ trick with `Router#pokemonDetail` that you used on
 **PokemonForm**
 
 The last view to migrate is the `PokemonForm`. Previously, we were
-handling the `submit` of the form with a handler in `pokedex-0.js`.
+handling the `submit` of the form in `pokedex-0.js` using jQuery.
 Now we're going to write a Backbone view to deal with our form
 submission.
 
@@ -270,24 +270,33 @@ First, refactor the HTML of the `form` out of the Rails view
 
 Second, write the `pokemonForm` function in the router. It should
 initialize a `PokemonForm` view. Typically form views take both a new
-model as well as a collection. We'll see why we need to pass the
+model and a collection. We'll see why we need to pass the
 collection in a bit. Construct the form view with a new `Pokemon` as the
 model, and the `this._pokemonIndex.collection` as the collection. Render
 the view and populate `$('#pokedex .pokemon-form')` with it's `$el`.
 
-Call the `pokemonForm` function in the `pokemonIndex`. This will ensure
-the form view is rendered for every route.
+Call `pokemonForm` in `Router#pokemonIndex`. This will ensure the form
+view is rendered for every route.
 
-Next, lets write the `PokemonForm` view. In `render` populate the `$el`
-using `JST["pokemonForm"]`.
+Next, write the `PokemonForm` view. In the `render` method populate the
+`$el` using `JST["pokemonForm"]`.
 
 At this point you should be able to refresh your browser and see the
 form. Woot!
 
 **Submit**
 
-Having a Backbone view backing a form is helpful when handling
-persistence of form data. Add a `submit` handler to the `events` hash
-that calls `savePokemon`.
+Add a `submit` handler to the `events` hash that calls `savePokemon`.
+It should serialize the form data using `serializeJSON` on the
+`currentTarget`. Just log it to the console for now and go give it a
+test drive.
+
+*See how the object has a key of `pokemon`?*
+
+In `savePokemon` update the model with our serialized data and `save`.
+You'll want to use the `pokemon` property of the serialized data.
+On successful save of the pokemon, add the model to `this.collection`
+and navigate to the pokemon detail page using
+`Backbone.history.navigate`.
 
 **TODO**
