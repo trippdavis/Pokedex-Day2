@@ -9,6 +9,9 @@ Pokedex.Router = Backbone.Router.extend({
   },
 
   toyDetail: function (pokemonId, toyId) {
+  },
+
+  pokemonForm: function () {
   }
 });
 
