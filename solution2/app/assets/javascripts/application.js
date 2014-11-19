@@ -24,3 +24,4 @@
 //= require pokedex-4
 //= require pokedex-5
 //= require pokedex-6
+//= require pokedex-7
