@@ -36,7 +36,7 @@ Inside this script tag is a template that, when evaluated with a
 image. To create a template object that can be rendered from the content
 of this script tag, we need to pass the content to the `_.template` function.
 The return value is a function that, when called and passed `{pokemon: pokemon}`
-as an argument shuld return the actual rendered html.
+as an argument should return the actual rendered html.
 
 Write the template code to to display a single Pokemon, recreating 
 `renderPokemonDetail` to display the Pokemon (but not
