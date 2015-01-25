@@ -38,7 +38,7 @@ of this script tag, we need to pass the content to the `_.template` function.
 The return value is a function that, when called and passed `{pokemon: pokemon}`
 as an argument should return the actual rendered html.
 
-Write the template code to to display a single Pokemon, recreating 
+Write the template code to display a single Pokemon, recreating 
 `renderPokemonDetail` to display the Pokemon (but not
 the list of toys yet!). Remember to use `<%%= ... %>` in your template, so that Rails
 doesn't try to interpret it.
