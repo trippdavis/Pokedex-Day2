@@ -3,12 +3,11 @@ Pokedex.RootView.prototype.addPokemonToList = function (pokemon) {
   this.$pokeList.append(liContent);
 };
 
-Pokedex.RootView.prototype.refreshPokemon = function (callback) {
+Pokedex.RootView.prototype.refreshPokemon = function () {
   this.pokes.fetch({
     success: (function () {
       this.$pokeList.empty();
       this.pokes.each(this.addPokemonToList.bind(this));
-      callback && callback();
     }).bind(this)
   });
 
