@@ -1,3 +1,4 @@
+/*
 Pokedex.RootView.prototype.createPokemon = function (attrs, callback) {
   var pokemon = new Pokedex.Models.Pokemon(attrs);
 
@@ -18,3 +19,4 @@ Pokedex.RootView.prototype.submitPokemonForm = function (event) {
 
   this.createPokemon(pokeAttrs, this.renderPokemonDetail.bind(this));
 };
+*/

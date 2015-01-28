@@ -1,3 +1,4 @@
+/*
 Pokedex.RootView.prototype.reassignToy = function (event) {
   var $currentTarget = $(event.currentTarget);
 
@@ -20,3 +21,4 @@ Pokedex.RootView.prototype.renderToysList = function (toys) {
     this.addToyToList(toy);
   }).bind(this));
 };
+*/

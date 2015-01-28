@@ -1,3 +1,4 @@
+/*
 Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
   var detailContent = JST["pokemonDetail"]({ pokemon: pokemon });
   this.$pokeDetail.html(detailContent);
@@ -21,3 +22,4 @@ Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
 
   this.renderPokemonDetail(pokemon);
 };
+*/

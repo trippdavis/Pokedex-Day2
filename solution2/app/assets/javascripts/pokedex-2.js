@@ -1,3 +1,4 @@
+/*
 Pokedex.RootView.prototype.addToyToList = function (toy) {
   var liContent = JST["toyListItem"]({ toy: toy });
   this.$pokeDetail.find(".toys").append(liContent);
@@ -19,3 +20,4 @@ Pokedex.RootView.prototype.selectToyFromList = function (event) {
 
   this.renderToyDetail(toy);
 };
+*/

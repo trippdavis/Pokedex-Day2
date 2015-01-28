@@ -69,6 +69,7 @@ Pokedex.Collections.PokemonToys = Backbone.Collection.extend({
   }
 });
 
+/*
 window.Pokedex.Test = {
   testShow: function (id) {
     var pokemon = new Pokedex.Models.Pokemon({ id: id });
@@ -112,7 +113,6 @@ window.Pokedex.RootView = function ($el) {
   );
 };
 
-/*
 $(function() {
     var $rootEl = $('#pokedex');
     window.Pokedex.rootView = new Pokedex.RootView($rootEl);

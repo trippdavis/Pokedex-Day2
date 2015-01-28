@@ -1,3 +1,4 @@
+/*
 Pokedex.RootView.prototype.addPokemonToList = function (pokemon) {
   var liContent = JST["pokemonListItem"]({ pokemon: pokemon });
   this.$pokeList.append(liContent);
@@ -13,3 +14,4 @@ Pokedex.RootView.prototype.refreshPokemon = function () {
 
   return this.pokes;
 };
+*/
