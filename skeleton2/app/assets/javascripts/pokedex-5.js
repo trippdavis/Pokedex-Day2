@@ -93,7 +93,7 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
         var newToy = new Pokedex.Models.Toy(data.toy);
         newToy.save({}, {
           success: function () {
-            debugger
+            // debugger pokemon not right 
             pokemon.toys().add(newToy);
             Backbone.history.navigate("pokemon/" + pokemon.id + "/toys/" + newToy.id);
           }
