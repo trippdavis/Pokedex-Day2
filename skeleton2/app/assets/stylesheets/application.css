@@ -111,7 +111,7 @@ body {
 }
 
 .detail img {
-  float: left;
+  display:block;
   max-width: 300px;
   max-height: 200px;
 }

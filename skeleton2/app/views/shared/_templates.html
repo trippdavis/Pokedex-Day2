@@ -1,14 +1,163 @@
 <script type="text/template" id="pokemon-list-item-template">
+  <li class="poke-list-item" data-id="<%%= pokemon.get('id') %>">
+    <div>name: <%%= pokemon.get('name') %> </div>
+    <div>poke_type: <%%= pokemon.get('poke_type') %> </div>
+  </li>
 </script>
 
 <script type="text/template" id="pokemon-detail-template">
+  <div class="detail">
+    <img src="<%%= pokemon.escape('image_url') %>"></img>
+    <%% for (var attribute in pokemon.attributes) { %>
+      <%% if (pokemon.get(attribute) && attribute !== 'id' && attribute !== 'image_url') { %>
+        <div> <%%= attribute %>: <%%= pokemon.get(attribute) %> </div>
+      <%% }  %>
+    <%% } %>
+    <ul class="toys"></ul>
+
+    New toy:
+    <form class='new-toy'>
+      <div>
+        <label
+          for='toy_name'>Name:</label>
+        <input
+          type='text'
+          id='toy_name'
+          name='toy[name]'>
+      </div>
+    <input type="hidden" name="toy[pokemon_id]" value="<%%= pokemon.id %>">
+      <div>
+        <label
+          for='toy_image_url'>Image URL:</label>
+        <input
+          type='text'
+          id='toy_image_url'
+          name='toy[image_url]'>
+      </div>
+
+      <div>
+        <label
+          for='toy_happiness'>Happiness:</label>
+        <input
+          type='number'
+          id='toy_happiness'
+          name='toy[happiness]'>
+      </div>
+
+      <div>
+        <label
+          for='toy_price'>Price:</label>
+        <input
+          type='number'
+          id='toy_price'
+          name='toy[price]'>
+      </div>
+
+      <button>Create Toy</button>
+      <br>
+    </form>
+  </div>
 </script>
 
 <script type="text/template" id="toy-list-item-template">
+  <li class="toy-list-item" data-id="<%%= toy.get('id') %>" data-pokemon-id="<%%= toy.get('pokemon_id') %>">
+    <%% var shortInfo = ['name', 'happiness', 'price']; %>
+    <%% shortInfo.forEach(function (attr) { %>
+      <div><%%= attr + ': ' + toy.get(attr) %></div>
+    <%% }); %>
+  </li>
 </script>
 
 <script type="text/template" id="toy-detail-template">
+  <div class="detail">
+    <img src="<%%= toy.get('image_url')%>"><br>
+    <%% for (var attr in toy.attributes) { %>
+      <%% if(attr !== 'pokemon_id' && attr !== 'image_url') { %>
+        <div> <%%= attr %>: <%%= toy.get(attr) %></div>
+      <%% } %>
+    <%% } %>
+  <select data-pokemon-id="<%%= toy.get('pokemon_id') %>" data-toy-id="<%%= toy.id %>">
+    <%% pokes.forEach(function (pokemon) { %>
+      <option value="<%%= pokemon.id %>"
+        <%% if (pokemon.id == toy.get("pokemon_id")) { %>
+          selected
+          <%% } %> >
+        <%%= pokemon.get('name') %>
+      </option>
+    <%% }); %>
+  </select>
+  </div>
 </script>
 
 <script type="text/template" id="pokemon-form-template">
+  <form class='new-pokemon'>
+    <div>
+      <label
+        for='pokemon_name'>Name:</label>
+      <input
+        type='text'
+        id='pokemon_name'
+        name='pokemon[name]'>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_image_url'>Image URL:</label>
+      <input
+        type='text'
+        id='pokemon_image_url'
+        name='pokemon[image_url]'>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_poke_type'>Type:</label>
+      <select
+        id='pokemon_poke_type'
+        name='pokemon[poke_type]'>
+        <% Pokemon::TYPES.each do |type|%>
+          <option><%= type %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_attack'>Attack:</label>
+      <input
+        type='number'
+        id='pokemon_attack'
+        name='pokemon[attack]'>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_defense'>Defense:</label>
+      <input
+        type='number'
+        id='pokemon_defense'
+        name='pokemon[defense]'>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_move_1'>Move #1:</label>
+      <input
+        type='text'
+        id='pokemon_move_1'
+        name='pokemon[moves][]'>
+    </div>
+
+    <div>
+      <label
+        for='pokemon_move_2'>Move #2:</label>
+      <input
+        type='text'
+        id='pokemon_move_2'
+        name='pokemon[moves][]'>
+    </div>
+
+    <button>Create Pokemon</button>
+    <br>
+  </form>
 </script>
